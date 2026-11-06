@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🐸 Lagoa Encantada — Português 2º ano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#2B86C5;        /* azul-lagoa */
+  --azul-esc:#1D5F8F;
+  --azul-claro:#E8F3FB;
+  --amar:#F2B705;        /* dourado-bola */
+  --amar-esc:#B58700;
+  --verm:#E8608E;        /* rosa-lótus */
+  --verm-esc:#B53E68;
+  --verde:#3F9E4D;       /* verde-vitória-régia */
+  --verde-esc:#2B7536;
+  --papel:#F3FAF2;
+  --tinta:#22332A;
+  --cinza:#6E7C74;
+  --borda:#D3E5CF;
+  --erro:#E2483D;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--papel);
+  background-image:radial-gradient(circle at 12px 12px,rgba(63,158,77,.10) 3px,transparent 4px),radial-gradient(circle at 36px 36px,rgba(43,134,197,.08) 3px,transparent 4px);
+  background-size:48px 48px;
+  color:var(--tinta);font-size:17px;line-height:1.5;padding-bottom:40px;
+}
+h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 10px;line-height:1.2;}
+.wrap{max-width:560px;margin:0 auto;padding:0 14px;}
+
+/* topo: a mochila de adesivos */
+.topbar{position:sticky;top:0;z-index:40;background:var(--azul);border-bottom:4px solid var(--azul-esc);padding:8px 0 6px;}
+.topbar .wrap{display:flex;align-items:center;gap:8px;}
+.logo{font-family:'Baloo 2',cursive;font-weight:800;font-size:1rem;color:#FFFBE8;white-space:nowrap;}
+.ovos{display:flex;gap:5px;margin-left:auto;}
+.ov{width:26px;height:26px;border-radius:50%;background:#DDEFE0;border:3px dashed #9CCBA4;opacity:.6;transition:.25s;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+.ov.on{background:var(--amar);border:3px solid #fff;opacity:1;transform:rotate(-8deg) scale(1.08);}
+.ov.on::after{content:'★';color:#fff;font-size:.8rem;}
+.tray-label{text-align:center;font-size:.72rem;color:#EAF6FF;font-weight:800;}
+
+.screen{display:none;}
+.screen.on{display:block;animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+
+.card{background:#fff;border:3px solid var(--borda);border-radius:18px;padding:16px;margin:14px 0;box-shadow:0 4px 0 rgba(0,0,0,.06);}
+.card.blue{background:var(--azul-claro);border-color:#C6D5F3;}
+.card.green{background:#EAF6EC;border-color:#BFE2C5;}
+.card.lilas{background:#F3EDFB;border-color:#D9C8F1;}
+
+.hero{background:linear-gradient(160deg,#2B86C5 0%,#2F9A8A 50%,#3F9E4D 100%);color:#fff;border-radius:20px;padding:20px 16px 18px;margin:16px 0;border:3px solid var(--azul-esc);text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'🌸 🍃 🐸 🟡 🍃 🌸';position:absolute;left:0;right:0;bottom:6px;font-size:1.25rem;letter-spacing:6px;opacity:.95;}
+.hero h1{font-size:1.95rem;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.25);margin:6px 0 2px;}
+.hero .sub{font-size:.95rem;font-weight:800;text-shadow:0 1px 0 rgba(0,0,0,.3);color:#fff;}
+.hero .prova{display:inline-block;margin:10px 0 26px;background:var(--amar);color:#3A2A00;font-weight:900;border-radius:999px;padding:5px 14px;font-size:.85rem;}
+.mascote{display:flex;gap:10px;align-items:flex-start;background:#fff;border:3px solid var(--borda);border-radius:16px;padding:12px;margin:12px 0;}
+.mascote .face{font-size:2.4rem;line-height:1;flex:0 0 auto;}
+.balao{position:relative;background:#FDEAF2;border:2px solid #F2A9C7;border-radius:14px;padding:9px 11px;font-weight:700;font-size:.95rem;flex:1;}
+.balao::before{content:'';position:absolute;left:-9px;top:14px;border:7px solid transparent;border-right-color:#F2A9C7;}
+
+.btn{display:block;width:100%;border:0;border-radius:14px;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;padding:13px 14px;margin:9px 0;cursor:pointer;text-align:left;background:var(--azul);color:#fff;box-shadow:0 4px 0 var(--azul-esc);transition:.1s;position:relative;}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--azul-esc);}
+.btn:focus-visible{outline:4px solid var(--amar);outline-offset:2px;}
+.btn.yellow{background:var(--amar);color:#3A2A00;box-shadow:0 4px 0 var(--amar-esc);}
+.btn.red{background:var(--erro);color:#fff;box-shadow:0 4px 0 #AE2F26;}
+.btn.green{background:var(--verde);color:#fff;box-shadow:0 4px 0 var(--verde-esc);}
+.btn.lilas{background:var(--verm);color:#fff;box-shadow:0 4px 0 var(--verm-esc);}
+.btn.ghost{background:#fff;color:var(--azul-esc);border:3px solid var(--azul);box-shadow:none;}
+.btn.small{font-size:.92rem;padding:9px 12px;}
+.btn[disabled]{opacity:.45;cursor:not-allowed;}
+.btn.locked{background:#DAD7DF;color:#6C6878;box-shadow:0 4px 0 #BBB7C4;}
+.btn.glow{animation:glow 1.6s ease-in-out 3;}
+@keyframes glow{0%,100%{box-shadow:0 4px 0 var(--azul-esc),0 0 0 0 rgba(242,140,40,0);}50%{box-shadow:0 4px 0 var(--azul-esc),0 0 0 7px rgba(242,140,40,.55);}}
+.selo{display:inline-block;font-family:'Nunito';font-size:.72rem;font-weight:900;border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle;}
+.selo.ok{background:#DDF3E1;color:#1F6B2B;}
+.selo.novo{background:#FFE7CC;color:#8A4A00;}
+.btn-row{display:flex;gap:8px;}
+.btn-row .btn{flex:1;}
+.menu-desc{font-size:.82rem;color:var(--cinza);margin:-4px 0 10px 4px;font-weight:700;}
+.menu-desc.lock{color:#8A4B2A;}
+.paisbox{background:#FFE7CC;border:2px solid #F2B46B;border-radius:14px;padding:10px 12px;margin:10px 0;font-weight:800;font-size:.92rem;}
+
+/* pílulas */
+.pill-box{background:#fff;border:3px dashed var(--azul);border-radius:18px;padding:22px 16px;text-align:center;min-height:200px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;}
+.pill-emoji{font-size:3.1rem;line-height:1;}
+.pill-text{font-size:1.1rem;font-weight:800;}
+.pill-extra{font-size:.98rem;font-weight:800;color:var(--azul-esc);background:var(--azul-claro);border-radius:12px;padding:8px 10px;}
+.pill-dots{display:flex;gap:6px;justify-content:center;margin:12px 0;flex-wrap:wrap;}
+.pill-dots i{width:10px;height:10px;border-radius:50%;background:#E3DCCD;display:block;}
+.pill-dots i.on{background:var(--amar);}
+.fotos{display:flex;gap:8px;width:100%;}
+.fotos div{flex:1;background:#F6F1E6;border:2px solid var(--borda);border-radius:12px;padding:8px;font-size:.9rem;font-weight:800;text-align:left;}
+.fotos b{display:block;font-family:'Baloo 2';font-size:1rem;color:var(--verm-esc);}
+
+/* jogo */
+.q-count{font-size:.8rem;font-weight:900;color:var(--cinza);text-align:right;}
+.q-text{font-size:1.06rem;font-weight:800;margin:6px 0 12px;}
+.opt{display:block;width:100%;text-align:left;border:3px solid var(--borda);background:#fff;border-radius:14px;padding:12px 14px;margin:8px 0;font-family:'Nunito';font-weight:800;font-size:1rem;cursor:pointer;transition:.12s;color:var(--tinta);}
+.opt:hover{border-color:var(--azul);}
+.opt:focus-visible{outline:4px solid var(--amar);outline-offset:2px;}
+.opt.ok{background:#E2F4E5;border-color:var(--verde);}
+.opt.no{background:#FCE4E1;border-color:var(--erro);}
+.opt[disabled]{cursor:default;}
+.fb{margin:12px 0;padding:12px;border-radius:14px;font-weight:700;display:none;}
+.fb.on{display:block;}
+.fb.good{background:#E2F4E5;border:2px solid var(--verde);}
+.fb.bad{background:#FCE4E1;border:2px solid var(--erro);}
+.duo{display:flex;gap:8px;}
+.duo .opt{flex:1;text-align:center;}
+.vis{text-align:center;margin:4px 0 8px;}
+.frase{background:#FFFBF2;border:2px dashed var(--amar);border-radius:14px;padding:12px;font-weight:800;font-size:1.05rem;text-align:center;margin:0 0 10px;}
+.texto{background:#FFFDF7;border:2px solid var(--borda);border-left:6px solid var(--verde);border-radius:12px;padding:12px;font-weight:600;font-size:.97rem;text-align:left;margin:4px 0 10px;}
+.texto p{margin:0 0 8px;}
+.texto .fonte{font-size:.78rem;color:var(--cinza);font-weight:700;margin:0;}
+
+/* separar em grupos */
+.grp-card{background:#fff;border:3px solid var(--amar);border-radius:18px;padding:14px;text-align:center;margin:6px 0 10px;}
+.grp-btns{display:flex;flex-wrap:wrap;gap:8px;}
+.grp-btns .opt{flex:1 1 45%;text-align:center;margin:0;}
+.grp-btns .opt.shake{animation:shake .35s;border-color:var(--erro);background:#FCE4E1;}
+@keyframes shake{0%,100%{transform:none;}25%{transform:translateX(-6px);}75%{transform:translateX(6px);}}
+.baskets{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.basket{flex:1 1 45%;background:var(--azul-claro);border:2px dashed #A9C0EE;border-radius:14px;padding:8px;min-height:64px;font-size:.85rem;}
+.basket b{display:block;font-family:'Baloo 2';font-size:.95rem;}
+.chip{display:inline-block;background:#fff;border:2px solid var(--verde);border-radius:999px;padding:2px 8px;margin:3px 2px;font-weight:800;font-size:.82rem;}
+
+/* escrita */
+.wbox{border:3px solid var(--borda);border-radius:16px;padding:13px;margin:12px 0;background:#fff;}
+.wbox.red{border-color:var(--erro);background:#FFF2F0;}
+.wbox h4{margin:0 0 6px;font-family:'Baloo 2';font-size:1.02rem;}
+.wbox textarea{width:100%;min-height:90px;border:2px solid var(--borda);border-radius:12px;padding:10px;font-family:'Nunito';font-size:1rem;font-weight:600;resize:vertical;background:#FFFDF6;}
+.wbox textarea:focus{outline:3px solid var(--amar);border-color:var(--amar);}
+.warn{background:#FFF3CE;border:2px solid #E5B93C;border-radius:12px;padding:10px;margin:8px 0;font-weight:700;font-size:.93rem;}
+.redflag{background:#FCE4E1;border:2px solid var(--erro);border-radius:12px;padding:10px;margin:8px 0;font-weight:800;font-size:.9rem;color:#8E2A18;}
+.modelo{background:var(--azul-claro);border:2px solid #C6D5F3;border-radius:12px;padding:10px;margin:8px 0;font-weight:700;font-size:.95rem;}
+.chk{margin:8px 0;}
+.chk p{margin:6px 0 4px;font-weight:800;font-size:.94rem;}
+.chk .yn{display:flex;gap:8px;}
+.chk .yn button{flex:1;border:3px solid var(--borda);background:#fff;border-radius:10px;padding:7px;font-family:'Nunito';font-weight:900;cursor:pointer;font-size:.92rem;}
+.chk .yn button.sel-y{background:#E2F4E5;border-color:var(--verde);}
+.chk .yn button.sel-n{background:#FFF3CE;border-color:#E5B93C;}
+
+/* cartaz */
+.tbl{width:100%;border-collapse:collapse;font-size:.92rem;margin:8px 0;}
+.tbl th,.tbl td{border:2px solid var(--borda);padding:6px 8px;text-align:left;vertical-align:top;}
+.tbl th{background:var(--azul-claro);font-weight:900;}
+.postit{background:#FFF6A8;border:2px solid #E8D75A;border-radius:6px;padding:11px;margin:10px 0;font-weight:800;font-size:.95rem;box-shadow:2px 3px 0 rgba(0,0,0,.08);}
+.alerta{background:#FCE4E1;border:2px solid var(--erro);border-radius:12px;padding:11px;margin:10px 0;font-weight:800;font-size:.95rem;}
+
+/* resultado */
+.big{font-size:3.4rem;text-align:center;line-height:1;margin:6px 0;}
+.code-box{background:var(--tinta);color:#FFD9A8;border-radius:14px;padding:14px;text-align:center;font-family:'Baloo 2';font-size:1.6rem;font-weight:800;letter-spacing:2px;margin:12px 0;}
+.codein{width:100%;border:3px solid var(--borda);border-radius:12px;padding:11px;font-family:'Baloo 2';font-size:1.1rem;text-align:center;letter-spacing:2px;text-transform:uppercase;}
+.save-info{font-size:.8rem;color:var(--cinza);font-weight:700;text-align:center;margin-top:10px;}
+textarea#backupBox{width:100%;min-height:76px;border:2px solid var(--borda);border-radius:12px;padding:9px;font-family:monospace;font-size:.78rem;}
+
+.mask{position:fixed;inset:0;background:rgba(30,30,50,.6);display:none;align-items:center;justify-content:center;z-index:90;padding:18px;}
+.mask.on{display:flex;}
+.md{background:#fff;border-radius:18px;padding:18px;max-width:380px;width:100%;border:4px solid var(--amar);}
+.md h3{font-size:1.2rem;}
+.conf{position:fixed;top:-12px;width:9px;height:14px;z-index:95;pointer-events:none;border-radius:2px;}
+@keyframes fall{to{transform:translateY(105vh) rotate(720deg);opacity:0;}}
+@media (prefers-reduced-motion:reduce){.screen.on{animation:none;}.conf{display:none;}.btn:active{transform:none;}.btn.glow{animation:none;}.grp-btns .opt.shake{animation:none;}}
+.rodape{text-align:center;font-size:.78rem;color:var(--cinza);font-weight:700;padding:18px 0 6px;}
+/* montar a frase */
+.ord-out{min-height:58px;background:#FFFBF2;border:2px dashed var(--amar);border-radius:14px;padding:10px;margin:0 0 10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.ord-out .chip{font-size:1rem;border-color:var(--azul);}
+.ord-out .vazio{color:var(--cinza);font-weight:700;font-size:.9rem;}
+.ord-pool{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+.ord-pool .opt{width:auto;display:inline-block;margin:0;padding:10px 14px;}
+.ord-pool .opt.usado{visibility:hidden;}
+.fotos{flex-wrap:wrap;}
+.fotos div{flex:1 1 40%;}
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="logo">🐸 Lagoa Encantada</span>
+    <div class="ovos" aria-label="Bolas de ouro da lagoa">
+      <div class="ov" id="ov1"></div><div class="ov" id="ov2"></div><div class="ov" id="ov3"></div>
+      <div class="ov" id="ov4"></div><div class="ov" id="ov5"></div><div class="ov" id="ov6"></div>
+    </div>
+  </div>
+  <div class="tray-label" id="trayLabel">🟡 Bolas de ouro</div>
+</div>
+
+<!-- ============ MENU ============ -->
+<section class="screen on" id="scr-menu">
+  <div class="wrap">
+    <div class="hero">
+      <h1>Lagoa Encantada</h1>
+      <div class="sub">Língua Portuguesa · 2º ano · Colégio São José</div>
+      <div class="sub">História, poema, pontuação, frases, diminutivo e aumentativo, R e RR</div>
+      <div class="prova">🗓️ Verificação: quinta-feira, 12/11/2026</div>
+    </div>
+
+    <div class="mascote">
+      <div class="face">🐸</div>
+      <div class="balao">
+        Croac, jovem aprendiz! Eu sou o <b>Sapinho Bilu</b> e moro numa <b>lagoa encantada</b>.
+        Lá no fundo estão escondidas <b>6 bolas de ouro</b>, e cada uma fica embaixo de uma <b>vitória-régia</b> 🍃.
+        As folhas abrem <b>uma de cada vez, na ordem</b>: termine uma para destravar a próxima.
+        Em cada folha você lê umas dicas curtinhas e depois joga. No fim tem o <b>Show Final na Lagoa</b>. Vamos pular? 🐸
+      </div>
+    </div>
+
+    <div id="paisSelo"></div>
+    <h2>🍃 As folhas da lagoa</h2>
+    <div id="menuList"></div>
+
+    <button class="btn ghost small" onclick="go('scr-pais')">👪 Área dos pais</button>
+    <div class="save-info" id="saveInfo"></div>
+    <div class="rodape">Feito para estudar sozinho, no celular ou no computador.</div>
+  </div>
+</section>
+
+<!-- ============ MURAL DA LAGOA (cartaz) ============ -->
+<section class="screen" id="scr-mural">
+  <div class="wrap">
+    <h1 style="margin-top:14px;">🗺️ Mural da Lagoa</h1>
+    <p style="font-weight:700;">Tudo o que cai na verificação, num lugar só. Leia com um adulto, devagar, até o fim.</p>
+
+    <div class="card green">
+      <h3>📖 A história do caderno: "O Príncipe Sapo e a Promessa Real"</h3>
+      <table class="tbl">
+        <tr><th>Pergunta</th><th>Resposta</th></tr>
+        <tr><td>Qual era o brinquedo favorito da princesa?</td><td>A <b>bola de ouro</b>.</td></tr>
+        <tr><td>Onde a bola caiu?</td><td><b>No fundo de um lago escuro.</b></td></tr>
+        <tr><td>Quem ajudou a princesa?</td><td>O <b>sapo</b>.</td></tr>
+        <tr><td>Qual foi a condição do sapo?</td><td>Um <b>beijo de agradecimento</b>.</td></tr>
+        <tr><td>O que a princesa fez de errado?</td><td>Saiu correndo, esqueceu de dizer "obrigado" e <b>não cumpriu o que prometeu</b>.</td></tr>
+        <tr><td>O que o rei ensinou?</td><td>"Uma promessa é algo sério. Se você prometeu, você deve cumprir!"</td></tr>
+        <tr><td>Por que o sapo virou príncipe?</td><td>Ele tinha sido <b>enfeitiçado por uma bruxa</b> e só o gesto da princesa poderia salvá-lo.</td></tr>
+        <tr><td>Como termina?</td><td>Viraram <b>grandes amigos</b> e aprenderam a sempre <b>falar a verdade</b>.</td></tr>
+      </table>
+      <div class="postit">💛 Ordem dos acontecimentos: 1️⃣ a bola caiu no lago → 2️⃣ o sapo buscou a bola e a princesa saiu correndo → 3️⃣ o sapo pediu ajuda ao rei → 4️⃣ o beijo e o sapo virou príncipe.</div>
+      <div class="postit">💛 Sentimentos: quando a bola caiu no lago, a princesa ficou <b>triste</b> (começou a chorar) 😢.</div>
+      <div class="alerta">⚠️ Escreva certinho: <b>PROMESSA</b> (com SS) e <b>CUMPRIR / CUMPRIDA</b> (com U). "Toda promessa tem que ser cumprida."</div>
+    </div>
+
+    <div class="card blue">
+      <h3>🎵 Versos e estrofes (livro, pp. 244-247)</h3>
+      <table class="tbl">
+        <tr><th>Palavra</th><th>O que é</th></tr>
+        <tr><td><b>VERSO</b></td><td>cada <b>linha</b> de um poema</td></tr>
+        <tr><td><b>ESTROFE</b></td><td>cada <b>conjunto de versos</b>. Há poemas com uma estrofe e outros com mais estrofes.</td></tr>
+        <tr><td><b>RIMA</b></td><td>palavras no fim dos versos com <b>sons finais iguais ou parecidos</b></td></tr>
+      </table>
+      <p style="font-weight:700;">🥤 "Guaraná com canudinho" (Sérgio Capparelli): <b>24 versos</b> e <b>12 estrofes</b> (cada estrofe tem 2 versos). Os animais que agem como pessoas: a <b>vaca</b> e o <b>gafanhoto</b> (o garçom).</p>
+      <p style="font-weight:700;">🔔 Rimas do poema: balcão – confusão · gafanhoto – biscoito · susto – custo · geladinho – canudinho · borboleta – careta.</p>
+      <p style="font-weight:700;">🍦 Quadrinha do caderno: "Sorvetinho, sorvetão / Sorvetinho de limão / Quem não tem um dinheirinho / Não toma sorvete, não!" → <b>4 versos</b> e <b>1 estrofe</b>.</p>
+      <div class="postit">💛 "Comprar briga" = estar pronta para <b>se meter em confusão</b>. Em poemas é comum usar palavras do dia a dia: a <b>linguagem informal</b>.</div>
+      <div class="postit">💛 "jacaré letrado": a palavra <b>jacaré</b> foi repetida muitas vezes para formar o desenho do jacaré.</div>
+      <div class="alerta">⚠️ Para saber se um texto parece poema, procure <b>linhas curtas (versos)</b> separadas em <b>grupinhos (estrofes)</b>. A folhinha com data no alto e assinatura no fim, com linhas que vão até a margem, <b>não</b> parece poema. No livro (p. 245) foi marcada a folhinha errada.</div>
+    </div>
+
+    <div class="card lilas">
+      <h3>❓ Pontuação ( . ? ! )</h3>
+      <table class="tbl">
+        <tr><th>Sinal</th><th>Nome</th><th>Frase</th><th>Exemplo do caderno</th></tr>
+        <tr><td style="font-size:1.3rem;"><b>.</b></td><td>ponto final</td><td>afirmativa</td><td>Eu gosto de chocolate.</td></tr>
+        <tr><td style="font-size:1.3rem;"><b>?</b></td><td>ponto de interrogação</td><td>interrogativa (pergunta)</td><td>Como você se chama?</td></tr>
+        <tr><td style="font-size:1.3rem;"><b>!</b></td><td>ponto de exclamação</td><td>exclamativa</td><td>Que dia mais lindo!</td></tr>
+      </table>
+      <p style="font-weight:700;">Nas folhas também aparece a <b>,</b> = <b>vírgula</b>.</p>
+      <div class="postit">💛 Mais exemplos das folhas: "Onde fica o lixo reciclado?" · "Quer ir brincar no balanço?" · "Que calor!" · "Ah, não!" · "Eu quero voltar para a escola."</div>
+      <div class="alerta">⚠️ Escreva certinho: INTERROGAÇÃO · EXCLAMAÇÃO · INTERROGATIVA · EXCLAMATIVA · AFIRMATIVA. No caderno apareceu "esclamativa" e "interogativa".</div>
+      <div class="alerta">⚠️ Na folha "Recorte e cole", frases com <b>!</b> foram coladas na coluna do ponto final. Antes de colar, leia a frase e veja qual sinal está no fim.</div>
+    </div>
+
+    <div class="card">
+      <h3>✏️ Escrita de frases</h3>
+      <p style="font-weight:700;">Olhe bem o desenho (quem aparece? o que está fazendo?) e escreva uma frase com o sinal pedido.</p>
+      <table class="tbl">
+        <tr><th>Sinal pedido</th><th>Frase do caderno</th></tr>
+        <tr><td>?</td><td>Onde as crianças brincam? · Quer ser meu amigo?</td></tr>
+        <tr><td>!</td><td>A menina está feliz com o balão! · Gooool! · Esse cachorro é muito fofinho!</td></tr>
+        <tr><td>.</td><td>O menino joga futebol.</td></tr>
+      </table>
+      <div class="postit">💛 Depois de escrever, confira: a frase fala do desenho? termina com o sinal pedido? as palavras estão escritas com cuidado?</div>
+    </div>
+
+    <div class="card green">
+      <h3>🐣 Diminutivo e aumentativo</h3>
+      <table class="tbl">
+        <tr><th>🤏 Diminutivo</th><th>😐 Normal</th><th>🐘 Aumentativo</th></tr>
+        <tr><td>patinho</td><td>pato</td><td>patão</td></tr>
+        <tr><td>coelhinho</td><td>coelho</td><td>coelhão</td></tr>
+        <tr><td>casinha</td><td>casa</td><td>casarão</td></tr>
+        <tr><td>sapatinho</td><td>sapato</td><td>sapatão</td></tr>
+        <tr><td>carrinho</td><td>carro</td><td>carrão</td></tr>
+        <tr><td><b>chapeuzinho</b></td><td>chapéu</td><td>chapelão</td></tr>
+        <tr><td>amiguinho</td><td>amigo</td><td><b>amigão</b></td></tr>
+        <tr><td>bolinha</td><td>bola</td><td>bolão</td></tr>
+        <tr><td>festinha</td><td>festa</td><td>festão</td></tr>
+        <tr><td>boquinha</td><td>boca</td><td>bocarra</td></tr>
+        <tr><td>homenzinho</td><td>homem</td><td>homenzarrão</td></tr>
+        <tr><td>cãozinho</td><td>cão</td><td>canzarrão</td></tr>
+        <tr><td>gatinho</td><td>gato</td><td>—</td></tr>
+        <tr><td>—</td><td>cachorro</td><td>cachorrão</td></tr>
+      </table>
+      <div class="postit">💛 Diminutivo: <b>tamanho pequeno</b> ou jeito <b>carinhoso</b>. Aumentativo: <b>tamanho grande</b> ou forma <b>afetiva</b>.</div>
+      <div class="postit">💛 -inho / -inha / -zinho / -zinha: canudo → canudinho · gelado → geladinho · sol → solzinho · mão → mãozinha · pão → pãozinho · rua → ruazinha.</div>
+      <div class="postit">💛 Piada do livro: "Tira um <b>sonecão</b>" = uma soneca <b>demorada</b>.</div>
+      <div class="alerta">⚠️ Palavras que deram trabalho no caderno: <b>chapeuzinho</b> (e não "chapezinho") · <b>borboletinha</b> · <b>menininho</b> · <b>montanhinha</b> · <b>gafanhotinho</b> · aumentativo de amigo = <b>amigão</b> (e não "amiga").</div>
+    </div>
+
+    <div class="card blue">
+      <h3>🐊 Palavras com R e RR</h3>
+      <table class="tbl">
+        <tr><th>Tipo</th><th>Exemplos</th></tr>
+        <tr><td><b>R no início (forte)</b></td><td>raposa · rio · roda · rico · rede · rua</td></tr>
+        <tr><td><b>R brando (fraco)</b></td><td>arara · peruca · periquito · peru · bandeira · jacaré · carinho</td></tr>
+        <tr><td><b>RR (forte)</b></td><td>carro · marreco · arroz · carroça · carruagem · macarronada</td></tr>
+        <tr><td><b>R intrometido</b> (depois de consoante)</td><td>brigadeiro · tristeza · cravo · criança · alegria</td></tr>
+        <tr><td><b>R caipira</b></td><td>árvore · porta · caderno · amor · arco</td></tr>
+      </table>
+      <div class="postit">💛 A letra <b>r</b> no início da palavra e o grupo <b>rr</b> têm sempre <b>som forte</b> (livro, p. 258).</div>
+      <div class="postit">💛 Trava-língua: "Tanto a aranha <b>arranha</b> a jarra, como a jarra <b>arranha</b> a aranha." → aranha (r fraco) · arranha, jarra (rr forte).</div>
+      <div class="postit">💛 Minidesafio: arraia sem "ar" = <b>raia</b> · sorriso sem "sor" = <b>riso</b>.</div>
+      <div class="alerta">⚠️ No caderno: <b>amora</b> tem um <b>r</b> só (foi escrito "amorra") e <b>corrida</b> tem <b>rr</b> (foi escrito "corida").</div>
+    </div>
+
+    <div class="card" style="text-align:center;" id="muralFim">
+      <p style="font-weight:800;">Chegou até aqui? Então clique no botão:</p>
+      <button class="btn green" id="btnLiMural" onclick="concluirMural()" disabled>✅ Li o mural até o fim</button>
+      <p class="menu-desc" id="muralHint" style="margin:0;">O botão acende quando você rolar até o fim do mural.</p>
+      <button class="btn yellow" id="btnProntoFinal" onclick="openStep(7)" style="display:none;">🌟 Pronta(o) para o Show Final!</button>
+    </div>
+    <button class="btn ghost small" onclick="go('scr-menu')">⬅️ Voltar para a lagoa</button>
+    <div class="rodape">&nbsp;</div>
+  </div>
+</section>
+
+<!-- ============ PÍLULAS ============ -->
+<section class="screen" id="scr-pill">
+  <div class="wrap">
+    <h2 id="pillTitle" style="margin-top:14px;"></h2>
+    <div class="pill-box" id="pillBox"></div>
+    <div class="pill-dots" id="pillDots"></div>
+    <button class="btn yellow" id="pillNext">Entendi! Próximo ➡️</button>
+    <button class="btn ghost small" onclick="go('scr-menu')">⬅️ Voltar para a lagoa</button>
+    <div class="rodape">&nbsp;</div>
+  </div>
+</section>
+
+<!-- ============ JOGO ============ -->
+<section class="screen" id="scr-game">
+  <div class="wrap">
+    <h2 id="gameTitle" style="margin-top:14px;"></h2>
+    <div class="q-count" id="gameCount"></div>
+    <div id="gameArea"></div>
+    <div class="fb" id="gameFb"></div>
+    <button class="btn yellow" id="gameNext" style="display:none;">Continuar ➡️</button>
+    <button class="btn ghost small" onclick="go('scr-menu')">⬅️ Voltar para a lagoa</button>
+    <div class="rodape">&nbsp;</div>
+  </div>
+</section>
+
+<!-- ============ FOLHA FEITA ============ -->
+<section class="screen" id="scr-won">
+  <div class="wrap">
+    <div class="card" style="text-align:center;">
+      <div class="big">🟡</div>
+      <h2>Folha concluída!</h2>
+      <p id="wonMsg" style="font-weight:800;"></p>
+      <button class="btn yellow" id="wonNext">Próxima folha ➡️</button>
+      <button class="btn ghost small" onclick="go('scr-menu')">⬅️ Voltar para a lagoa</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIM DO SHOW ============ -->
+<section class="screen" id="scr-fim">
+  <div class="wrap">
+    <div class="card" style="text-align:center;">
+      <div class="big">🌟</div>
+      <h2>Show Final concluído!</h2>
+      <p style="font-weight:900;font-size:1.18rem;" id="fimScore"></p>
+      <p id="fimMsg"></p>
+      <div class="code-box" id="fimCode"></div>
+      <p style="font-size:.85rem;font-weight:700;">Mostre este código para um adulto. 😊</p>
+      <button class="btn green" onclick="go('scr-menu')">⬅️ Voltar para a lagoa</button>
+      <button class="btn ghost small" onclick="openStep(7)">🔁 Fazer o Show Final de novo</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ÁREA DOS PAIS ============ -->
+<section class="screen" id="scr-pais">
+  <div class="wrap">
+    <h1 style="margin-top:14px;">👪 Área dos pais</h1>
+
+    <div class="card blue">
+      <h3>🗓️ Plano de estudo (verificação na quinta-feira, 12/11)</h3>
+      <p><b>Uma tarde:</b> folhas 1, 2 e 3 (história, versos e estrofes, pontuação).<br>
+      <b>Pausa</b> (água, lanche, brincar).<br>
+      <b>À noite (ou no dia seguinte):</b> folhas 4, 5 e 6 (escrita de frases, diminutivo e aumentativo, R e RR).<br>
+      <b>Na véspera:</b> o Mural da Lagoa lido junto com um adulto.<br>
+      <b>No dia da prova:</b> só o Mural + o Show Final.</p>
+      <p style="font-size:.9rem;"><b>Como funciona:</b> os materiais abrem um por vez, na ordem. Conclua um para destravar o próximo.
+      O progresso fica <b>neste aparelho</b>; para continuar em outro, use 📥 Exportar / 📤 Importar ou a chave dos pais abaixo.</p>
+    </div>
+
+    <div class="card">
+      <h3>✏️ Pontos para reforçar (vistos no caderno e no livro)</h3>
+      <p style="font-size:.92rem;">Nas atividades fotografadas, estes pontos deram trabalho. O kit treina cada um deles:</p>
+      <ul style="font-weight:700;font-size:.92rem;">
+        <li><b>Diminutivo:</b> "chapezinho" (o certo é <b>chapeuzinho</b>); montanha e montanhinha escritas errado; menininho e borboletinha marcados na folha; no livro (p. 250), borboletinha e gafanhotinho com letras trocadas; chinelo e dedo ficaram em branco no quadro. Treinado na folha 5.</li>
+        <li><b>Aumentativo de amigo:</b> respondeu "amiga" (o certo é <b>amigão</b>). Folha 5.</li>
+        <li><b>Pontuação:</b> na folha "Recorte e cole", frases com ! foram para a coluna do ponto final. Escrita de <b>exclamativa / exclamação</b> e <b>interrogativa / interrogação</b> com letras trocadas. Folha 3.</li>
+        <li><b>Poema:</b> no livro (p. 245, atividade 5), foi marcada a folhinha que <b>não</b> parece poema. Folha 2.</li>
+        <li><b>R e RR:</b> "amorra" (o certo é <b>amora</b>) e "corida" (o certo é <b>corrida</b>). Folha 6.</li>
+        <li><b>História:</b> a frase do rei foi escrita com letras trocadas. Treinamos <b>promessa</b> e <b>cumprir</b>. Folha 1.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📊 Relatório e gabarito</h3>
+      <p style="font-size:.92rem;">Digite o código <b>PAIS-77</b> (fixo da família) ou o código <b>SIM-XX-YY</b> que apareceu no fim do Show Final.</p>
+      <input class="codein" id="paisCode" placeholder="PAIS-77" maxlength="9">
+      <button class="btn small" onclick="abrirRelatorio()">Ver relatório e gabarito</button>
+      <div id="paisTrilha"></div>
+      <div id="paisReport"></div>
+    </div>
+
+    <div class="card">
+      <h3>🔑 Sobre o código SIM-XX-YY</h3>
+      <p style="font-size:.93rem;"><b>XX</b> = quantas questões do Show Final foram acertadas (00 a 10).<br>
+      <b>YY</b> = duas letras fixas deste aparelho. Se mudarem, o material foi zerado.</p>
+    </div>
+
+    <div class="card">
+      <h3>💾 Salvar, passar de aparelho e zerar</h3>
+      <div class="btn-row">
+        <button class="btn small green" onclick="exportar()">📥 Exportar</button>
+        <button class="btn small" onclick="importar()">📤 Importar</button>
+      </div>
+      <textarea id="backupBox" placeholder="O código do backup aparece (ou é colado) aqui."></textarea>
+      <button class="btn small red" onclick="zerar()">🗑️ Zerar tudo</button>
+    </div>
+
+    <button class="btn ghost" onclick="go('scr-menu')">⬅️ Voltar para a lagoa</button>
+    <div class="rodape">Fontes: livro de Língua Portuguesa do 2º ano (fotos), pp. 244-247 (poema "Guaraná com canudinho", de Sérgio Capparelli, e atividades), pp. 250-251 (diminutivo e aumentativo), pp. 256-260 (palavras com r e rr); folhas do caderno: "O Príncipe Sapo e a Promessa Real" e perguntas, "Diminutivo e aumentativo", "Vamos cumprir o desafio", árvore do diminutivo e aumentativo, caça-aumentativos e diminutivos, "Fique sabendo" (sons da letra R), r ou rr, caça-palavras R e RR, frases com sinais, "Recorte e cole", "Pontuação"; comunicado da verificação (12/11/2026). O poema não foi copiado inteiro: leia-o no livro, p. 244.</div>
+  </div>
+</section>
+
+<div class="mask" id="mask">
+  <div class="md">
+    <h3 id="mdTitle"></h3>
+    <p id="mdMsg"></p>
+    <button class="btn" id="mdOk">Está bem</button>
+    <button class="btn ghost" id="mdCancel" style="display:none;">Cancelar</button>
+  </div>
+</div>
+<script>
+/* =========================================================
+   LAGOA ENCANTADA — Língua Portuguesa 2º ano — Colégio São José
+   Fonte ÚNICA: fotos enviadas pela Ana:
+   livro de Língua Portuguesa 2, pp. 244-247 (poema "Guaraná com
+   canudinho", Sérgio Capparelli, + atividades), pp. 250-251
+   (diminutivo e aumentativo), pp. 256-260 (palavras com r e rr);
+   folhas do caderno (conto "O Príncipe Sapo e a Promessa Real" +
+   perguntas; diminutivo e aumentativo; "Fique sabendo" R; r ou rr;
+   caça-palavras; frases com sinais; "Recorte e cole"; "Pontuação");
+   comunicado da verificação de 12/11/2026.
+   Sem áudio. Sem nome de pessoas reais da escola.
+   O poema NÃO é copiado inteiro (só trechos curtos que o próprio
+   livro repete nas atividades).
+   ========================================================= */
+"use strict";
+
+function vis(html){ return '<div class="vis">'+html+'</div>'; }
+function txt(html){ return '<div class="texto">'+html+'</div>'; }
+
+var TITULOS={1:'📖 Hora da História',2:'🎵 Versos e Estrofes',3:'❓ Pontuação . ? !',
+             4:'✏️ Escrita de Frases',5:'🐣 Diminutivo e Aumentativo',6:'🐊 Palavras com R e RR'};
+var DESC={1:'"O Príncipe Sapo e a Promessa Real": quem, onde, o quê e em que ordem.',
+          2:'O poema "Guaraná com canudinho": verso, estrofe e rima.',
+          3:'Ponto final, ponto de interrogação e ponto de exclamação.',
+          4:'Frases com ? , ! e . sobre um desenho. ⭐ Tem escrita.',
+          5:'patinho · pato · patão. -inho, -zinho, -ão…',
+          6:'R forte, R brando, RR, R intrometido e R caipira.'};
+
+var QUADRINHA=txt('<p>Sorvetinho, sorvetão<br>Sorvetinho de limão<br>Quem não tem um dinheirinho<br>Não toma sorvete, não!</p><p class="fonte">Folha do caderno "Diminutivo e aumentativo".</p>');
+
+/* =========================================================
+   PÍLULAS DE TEORIA (tudo das fotos)
+   ========================================================= */
+var PILLS={
+1:{t:'📖 Folha 1 — Hora da História',p:[
+ {e:'📜',x:'No caderno tem a história <b>"O Príncipe Sapo e a Promessa Real"</b>.',y:'Vamos lembrar o que aconteceu, parte por parte.'},
+ {e:'👸 🟡',x:'Uma <b>princesa</b> adorava brincar no <b>jardim</b> com sua <b>bola de ouro</b> favorita.'},
+ {e:'💧',x:'Um dia, a bola caiu <b>no fundo de um lago escuro</b>.',y:'A princesa começou a chorar: achou que tinha perdido o brinquedo para sempre. 😢'},
+ {e:'🐸',x:'Um <b>sapo</b> apareceu e disse que buscava a bola, com uma condição:',y:'ela devia dar a ele um <b>beijo de agradecimento</b>.'},
+ {e:'🏰',x:'O sapo entregou a bola, mas a princesa pegou o brinquedo e <b>saiu correndo</b> para o castelo.',y:'Ela esqueceu de dizer "obrigado" e <b>não cumpriu o que prometeu</b>. Que feio!'},
+ {e:'👑',x:'O sapinho não desistiu: foi até o castelo e contou tudo para o <b>rei</b>, o papai da princesa.'},
+ {e:'💬',x:'O rei, que era muito justo, explicou:',y:'"Minha filha, uma promessa é algo sério. Se você prometeu, você deve cumprir!"'},
+ {e:'💋',x:'Mesmo fazendo careta, a princesa fechou os olhos e deu um beijo no sapo. <b>POF!</b>'},
+ {e:'🤴',x:'Num passe de mágica, o sapo virou um <b>príncipe</b>!',y:'Ele tinha sido <b>enfeitiçado por uma bruxa</b>, e só o gesto da princesa poderia salvá-lo.'},
+ {e:'🤝',x:'No final, os dois se tornaram <b>grandes amigos</b> e aprenderam a sempre <b>falar a verdade</b>.'},
+ {e:'✍️',x:'Escreva certinho: <b>PROMESSA</b> (com SS) e <b>CUMPRIR</b> / <b>CUMPRIDA</b> (com U).',y:'"Toda promessa tem que ser cumprida."'}
+]},
+2:{t:'🎵 Folha 2 — Versos e Estrofes',p:[
+ {e:'📖',x:'No livro (p. 244) tem o poema <b>"Guaraná com canudinho"</b>, de Sérgio Capparelli.',y:'Um poema que brinca com as palavras para criar versos divertidos. Leia no livro!'},
+ {e:'📏',x:'<b>Cada linha</b> de um poema é um <b>VERSO</b>.'},
+ {e:'🧱',x:'<b>Cada conjunto de versos</b> é uma <b>ESTROFE</b>.',y:'Há poemas com uma estrofe e outros com mais estrofes.'},
+ {e:'🔢',x:'"Guaraná com canudinho" tem <b>24 versos</b> e <b>12 estrofes</b>.',y:'Cada estrofe tem 2 versos.'},
+ {e:'🐄 🦗',x:'No começo do poema, dois animais se comportam como pessoas:',y:'a <b>vaca</b> e o <b>gafanhoto</b> (o garçom).'},
+ {e:'🔔',x:'<b>RIMA</b>: palavras no final dos versos com <b>sons finais iguais ou parecidos</b>.',y:'balcão – confusão · gafanhoto – biscoito · susto – custo'},
+ {e:'🥤',x:'"– E que esteja <b>geladinho</b>,<br>Pra eu beber de <b>canudinho</b>!"',y:'geladinho rima com canudinho'},
+ {e:'🎀',x:'"Na gravata <b>borboleta</b>,<br>Gafanhoto fez <b>careta</b>."',y:'borboleta rima com careta'},
+ {e:'💬',x:'"Comprar briga" = estar pronta para <b>se meter em confusão</b>.',y:'Em poemas é comum usar palavras do dia a dia: a <b>linguagem informal</b>.'},
+ {e:QUADRINHA,x:'Esta quadrinha do caderno tem <b>4 versos</b> e <b>1 estrofe</b>.'},
+ {e:'📝',x:'Para saber se um texto parece poema, procure <b>linhas curtas (versos)</b> separadas em <b>grupinhos (estrofes)</b>.',y:'⚠️ A folhinha com data no alto e assinatura no fim, com linhas até a margem, NÃO parece poema.'},
+ {e:'🐊',x:'No poema "jacaré letrado" (p. 256), a palavra <b>jacaré</b> foi repetida muitas vezes para formar o desenho do jacaré.',y:'Um jacaré feito de palavras, que são feitas de letras!'}
+]},
+3:{t:'❓ Folha 3 — Pontuação . ? !',p:[
+ {e:'✏️',x:'Os sinais de pontuação da prova: <b style="font-size:1.4rem;"> .  ?  ! </b>'},
+ {e:'⚫',x:'<b>.</b> = <b>PONTO FINAL</b>',y:'"Eu gosto de chocolate."'},
+ {e:'❓',x:'<b>?</b> = <b>PONTO DE INTERROGAÇÃO</b>',y:'Aparece nas perguntas: "Como você se chama?"'},
+ {e:'❗',x:'<b>!</b> = <b>PONTO DE EXCLAMAÇÃO</b>',y:'"Que dia mais lindo!" · "Que calor!"'},
+ {e:'〰️',x:'Nas folhas também aparece a <b>,</b> = <b>VÍRGULA</b>.'},
+ {e:'📋',x:'Frase com <b>.</b> é <b>AFIRMATIVA</b>.',y:'"Eu quero voltar para a escola."'},
+ {e:'🙋',x:'Frase com <b>?</b> é <b>INTERROGATIVA</b>: é uma pergunta.',y:'"Onde fica o lixo reciclado?" · "Quer ir brincar no balanço?"'},
+ {e:'🤩',x:'Frase com <b>!</b> é <b>EXCLAMATIVA</b>.',y:'"Ah, não!" · "Que calor!" · "Que dia mais lindo!"'},
+ {e:'✍️',x:'Escreva certinho:',y:'INTERROGAÇÃO · EXCLAMAÇÃO · INTERROGATIVA · EXCLAMATIVA · AFIRMATIVA'},
+ {e:'⚠️',x:'Na folha "Recorte e cole", frases com <b>!</b> foram coladas na coluna do ponto final.',y:'Antes de colar, leia a frase e olhe qual sinal está no fim!'}
+]},
+4:{t:'✏️ Folha 4 — Escrita de Frases',p:[
+ {e:'🖼️',x:'Nas folhas do caderno você <b>observou um desenho</b> e <b>criou frases</b> usando o sinal pedido.'},
+ {e:'❓',x:'Com <b>?</b> a frase é uma <b>pergunta</b> (interrogativa).',y:'Do caderno: "Quer ser meu amigo?" · "Onde as crianças brincam?"'},
+ {e:'❗',x:'Com <b>!</b> a frase é <b>exclamativa</b>.',y:'Do caderno: "Gooool!" · "A menina está feliz com o balão!"'},
+ {e:'⚫',x:'Com <b>.</b> a frase é <b>afirmativa</b>.',y:'Do caderno: "O menino joga futebol."'},
+ {e:'🔍',x:'Antes de escrever, olhe bem a figura:',y:'Quem aparece? O que está fazendo?'},
+ {e:'✅',x:'Depois de escrever, confira:',y:'A frase fala da figura? Terminou com o sinal pedido? As palavras estão escritas com cuidado?'}
+]},
+5:{t:'🐣 Folha 5 — Diminutivo e Aumentativo',p:[
+ {e:'🐥 🦆',x:'<b>PATINHO</b> = diminutivo<br><b>PATO</b> = grau normal<br><b>PATÃO</b> = aumentativo'},
+ {e:'🤏',x:'<b>DIMINUTIVO</b>: para indicar <b>tamanho pequeno</b> ou falar de algo ou alguém de jeito <b>carinhoso</b>.',y:'gato → gatinho · chapéu → chapeuzinho'},
+ {e:'🐘',x:'<b>AUMENTATIVO</b>: para indicar <b>tamanho grande</b> ou falar de algo ou alguém de forma <b>afetiva</b>.',y:'cachorro → cachorrão · menino → meninão'},
+ {e:'🥤',x:'No poema: canudo → <b>canudinho</b> (um objeto pequeno) · gelado → <b>geladinho</b> (bem gelado).'},
+ {e:'➕',x:'No livro: acrescente <b>-inho</b> / <b>-inha</b> ou <b>-zinho</b> / <b>-zinha</b> no final:',y:'sol → solzinho · mão → mãozinha · pão → pãozinho · rua → ruazinha'},
+ {e:'😴',x:'Na piada do livro: "Tira um <b>sonecão</b>." = uma soneca <b>demorada</b>.',y:'cachorro grande = <b>cachorrão</b>'},
+ {e:'🐶',x:'<b>amigo</b> → <b>amiguinho</b> (diminutivo) · <b>amigão</b> (aumentativo)',y:'⚠️ O aumentativo de amigo é AMIGÃO (amiga é outra palavra, não é aumentativo).'},
+ {e:'⚠️',x:'Atenção na escrita (deram trabalho no caderno):',y:'chapéu → chapeuzinho · borboleta → borboletinha · menino → menininho · montanha → montanhinha · gafanhoto → gafanhotinho'},
+ {e:'🔎',x:'No caça-palavras do caderno:',y:'boquinha / bocarra · casinha / casarão · bonequinha / bonecão · livrinho / livrão · homenzinho / homenzarrão · cãozinho / canzarrão · chapeuzinho / chapelão · chavinha / chavona'},
+ {e:'📋',x:'Na árvore do caderno:',y:'casa → casinha / casarão · sapato → sapatinho / sapatão · carro → carrinho / carrão · muro → murinho / murão'}
+]},
+6:{t:'🐊 Folha 6 — Palavras com R e RR',p:[
+ {e:'🔤',x:'A letra <b>R</b>, dependendo da posição, tem <b>sons diferentes</b>.'},
+ {e:'🦊',x:'<b>R no início = som FORTE</b>',y:'raposa · rio · roda · rico · rede · rua'},
+ {e:'🦜',x:'<b>R brando</b> (som fraco):',y:'arara · peruca · periquito · peru · bandeira · jacaré · carinho'},
+ {e:'🚗',x:'<b>RR = som FORTE</b>',y:'carro · marreco · arroz · carroça · carruagem · macarronada'},
+ {e:'💡',x:'A letra <b>r</b> no início da palavra e o grupo <b>rr</b> têm sempre <b>som forte</b>.',y:'(livro, p. 258)'},
+ {e:'🍫',x:'<b>R intrometido</b>: vem <b>depois de consoante</b>.',y:'brigadeiro · tristeza · cravo · criança · alegria'},
+ {e:'🌳',x:'<b>R caipira</b>:',y:'árvore · porta · caderno · amor · arco'},
+ {e:'🕷️',x:'Trava-língua: "Tanto a aranha <b>arranha</b> a jarra, como a jarra <b>arranha</b> a aranha."',y:'aranha = r fraco · arranha e jarra = rr forte'},
+ {e:'🔁',x:'Minidesafio do livro: tire a primeira sílaba de <b>arraia</b> → <b>raia</b>. Tire a primeira sílaba de <b>sorriso</b> → <b>riso</b>.'},
+ {e:'⚠️',x:'Cuidado com estas (deram trabalho no caderno):',y:'amora (um r só) · corrida (rr)'}
+]}
+};
+
+/* =========================================================
+   MINIJOGOS (c = índice da certa ANTES de embaralhar)
+   ========================================================= */
+var VF=['✅ Verdadeiro (V)','❌ Falso (F)'];
+var JOGO={
+1:[
+ {t:'mc',p:'Qual era o brinquedo favorito da princesa?',o:['uma bola de ouro','uma boneca','uma coroa','um balão'],c:0,ex:{1:'Não tem boneca na história.',2:'Não tem coroa na história.',3:'Não tem balão na história.'},bom:'Ela adorava brincar com sua bola de ouro.'},
+ {t:'mc',p:'Onde a bola caiu?',o:['no fundo de um lago escuro','em cima do castelo','no quarto do rei','dentro de uma caixa'],c:0,ex:{1:'A bola não foi parar no castelo.',2:'A bola não foi parar no quarto do rei.',3:'Não tem caixa na história.'},bom:'"No fundo do lago" — lago com L-A-G-O.'},
+ {t:'mc',p:'Quem ajudou a princesa a recuperar o brinquedo?',o:['o sapo','o rei','a bruxa','ninguém'],c:0,ex:{1:'O rei aparece depois, quando o sapo vai ao castelo.',2:'A bruxa foi quem enfeitiçou o príncipe.',3:'Alguém ajudou, sim!'},bom:'O sapo buscou a bola.'},
+ {t:'mc',p:'Qual foi a condição do sapo para buscar a bola?',o:['um beijo de agradecimento','uma bola de ouro','morar no castelo','um pedaço de bolo'],c:0,ex:{1:'A bola era da princesa.',2:'Ele não pediu para morar no castelo.',3:'Não tem bolo na história.'},bom:'"Você deve me dar um beijo de agradecimento!"'},
+ {t:'mc',p:'O que a princesa fez de <b>errado</b>?',o:['Saiu correndo, não disse "obrigado" e não cumpriu a promessa.','Jogou a bola no lago de propósito.','Brigou com o rei.','Não quis brincar no jardim.'],c:0,ex:{1:'A bola caiu, ela não jogou.',2:'Ela não brigou com o rei.',3:'Ela adorava brincar no jardim.'},bom:'Que feio! Ela não cumpriu o que prometeu.'},
+ {t:'mc',p:'O que o rei ensinou para a princesa?',o:['Se você prometeu, você deve cumprir!','Nunca brinque no jardim.','Sapo não pode entrar no castelo.','Bola de ouro não é brinquedo.'],c:0,ex:{1:'O rei não falou do jardim.',2:'O rei recebeu o sapo e ouviu a história.',3:'O rei não falou isso.'},bom:'"Uma promessa é algo sério. Se você prometeu, você deve cumprir!"'},
+ {t:'mc',p:'Como a princesa se sentiu quando a bola caiu no lago?',o:['triste 😢','feliz 😀','com sono 😴','com fome 🍕'],c:0,ex:{1:'Ela começou a chorar.',2:'Ela começou a chorar.',3:'Ela começou a chorar.'},bom:'Ela começou a chorar, achando que tinha perdido o brinquedo para sempre.'},
+ {t:'mc',p:'No começo da história ele era um ___. Depois da mágica, ele era um ___.',o:['sapo · príncipe','príncipe · sapo','rei · sapo','sapo · rei'],c:0,ex:{1:'Está ao contrário!',2:'O rei é o papai da princesa.',3:'Ele virou príncipe, não rei.'},bom:'Sapo no começo, príncipe depois do beijo.'},
+ {t:'ord',p:'Toque nos acontecimentos na ordem em que aconteceram (1º, 2º, 3º, 4º):',sep:' → ',
+  w:['A bola de ouro caiu dentro do lago escuro.','O sapo buscou a bola e a princesa saiu correndo.','O sapo pediu ajuda para o rei no castelo.','A princesa deu um beijo no sapo e ele virou príncipe.'],
+  bom:'1º a bola caiu → 2º o sapo buscou → 3º pediu ajuda ao rei → 4º o beijo.'},
+ {t:'mc',p:'Por que o sapo virou príncipe?',o:['Ele tinha sido enfeitiçado por uma bruxa, e o gesto da princesa o salvou.','Porque o rei mandou.','Porque ele caiu no lago.','Porque achou a bola de ouro.'],c:0,ex:{1:'O rei não mandou nada disso.',2:'Quem caiu no lago foi a bola.',3:'Achar a bola não foi o que quebrou o feitiço.'},bom:'Ele tinha sido enfeitiçado por uma bruxa.'},
+ {t:'mc',p:'O que eles aprenderam no final?',o:['a sempre falar a verdade','a nunca brincar de bola','a morar no lago','a fugir do castelo'],c:0,ex:{1:'A história não diz isso.',2:'A história não diz isso.',3:'A história não diz isso.'},bom:'Ficaram grandes amigos e aprenderam a sempre falar a verdade.'},
+ {t:'mc',p:'Qual palavra está escrita <b>certinha</b>?',o:['promessa','promesa','promeça','pomessa'],c:0,ex:{1:'Falta um S: promeSSa.',2:'É com SS, não com Ç.',3:'Falta o R: pRomessa.'},bom:'P-R-O-M-E-S-S-A.'}
+],
+2:[
+ {t:'mc',p:'Cada <b>linha</b> de um poema se chama:',o:['verso','estrofe','rima','título'],c:0,ex:{1:'Estrofe é o conjunto de versos.',2:'Rima é o som parecido no final.',3:'Título é o nome do poema.'},bom:'Cada linha = um verso.'},
+ {t:'mc',p:'Cada <b>conjunto de versos</b> se chama:',o:['estrofe','verso','rima','título'],c:0,ex:{1:'Verso é cada linha.',2:'Rima é o som parecido no final.',3:'Título é o nome do poema.'},bom:'Conjunto de versos = estrofe.'},
+ {t:'mc',p:'Quantos <b>versos</b> tem o poema "Guaraná com canudinho"?',o:['24','12','2','10'],c:0,ex:{1:'12 é o número de estrofes.',2:'2 é quantos versos tem cada estrofe.',3:'Conte as linhas no livro, p. 244.'},bom:'24 versos.'},
+ {t:'mc',p:'Quantas <b>estrofes</b> tem o poema "Guaraná com canudinho"?',o:['12','24','2','1'],c:0,ex:{1:'24 é o número de versos.',2:'2 é quantos versos tem cada estrofe.',3:'O poema tem várias estrofes.'},bom:'12 estrofes, cada uma com 2 versos.'},
+ {t:'mc',p:'Quantos <b>versos</b> tem esta quadrinha?',vis:QUADRINHA,o:['4','1','2','8'],c:0,ex:{1:'1 é o número de estrofes.',2:'Conte as linhas: são mais de 2.',3:'Conte de novo as linhas.'},bom:'4 linhas = 4 versos.'},
+ {t:'mc',p:'Quantas <b>estrofes</b> tem a mesma quadrinha?',vis:QUADRINHA,o:['1','4','2','3'],c:0,ex:{1:'4 é o número de versos.',2:'Os versos estão todos juntos, num grupo só.',3:'Os versos estão todos juntos, num grupo só.'},bom:'Um grupo só = 1 estrofe.'},
+ {t:'mc',p:'Qual palavra <b>rima</b> com <b>balcão</b>?',o:['confusão','biscoito','custo','careta'],c:0,ex:{1:'Biscoito rima com gafanhoto.',2:'Custo rima com susto.',3:'Careta rima com borboleta.'},bom:'balcão – confusão.'},
+ {t:'mc',p:'Qual palavra <b>rima</b> com <b>gafanhoto</b>?',o:['biscoito','confusão','susto','canudinho'],c:0,ex:{1:'Confusão rima com balcão.',2:'Susto rima com custo.',3:'Canudinho rima com geladinho.'},bom:'gafanhoto – biscoito.'},
+ {t:'mc',p:'Qual palavra <b>rima</b> com <b>susto</b>?',o:['custo','biscoito','careta','balcão'],c:0,ex:{1:'Biscoito rima com gafanhoto.',2:'Careta rima com borboleta.',3:'Balcão rima com confusão.'},bom:'susto – custo.'},
+ {t:'mc',p:'No começo do poema, quais animais se comportam como pessoas?',o:['a vaca e o gafanhoto','o jacaré e a aranha','o sapo e o pato','a borboleta e o gato'],c:0,ex:{1:'O jacaré e a aranha estão em outras páginas.',2:'Eles não estão no poema.',3:'Eles não estão no começo do poema.'},bom:'A vaca pede um guaraná e o gafanhoto é o garçom.'},
+ {t:'mc',p:'O que significa "comprar briga"?',o:['estar pronta para se meter em confusão','estar pronta para comprar um produto'],c:0,ex:{1:'Não é comprar de verdade: é linguagem informal.'},bom:'Comprar briga = se meter em confusão.'},
+ {t:'mc',p:'Qual destas folhinhas parece um <b>poema</b>?',o:['📄 Linhas curtas, separadas em grupinhos','📄 Linhas compridas, com data no alto e assinatura no fim'],c:0,ex:{1:'Essa NÃO parece poema: as linhas vão até a margem e não formam estrofes.'},bom:'Poema tem versos (linhas curtas) em estrofes (grupinhos).'}
+],
+3:[
+ {t:'grp',p:'Que sinal termina cada frase?',grupos:['⚫ .','❓ ?','❗ !'],
+  itens:[{e:'🙋',n:'Como você se chama',g:1,d:'É uma pergunta.'},
+         {e:'🍫',n:'Eu gosto de chocolate',g:0,d:'É uma frase afirmativa.'},
+         {e:'🌞',n:'Que dia mais lindo',g:2,d:'É uma frase exclamativa.'},
+         {e:'🥵',n:'Que calor',g:2,d:'É uma frase exclamativa.'},
+         {e:'🛝',n:'Quer ir brincar no balanço',g:1,d:'É uma pergunta.'},
+         {e:'🏫',n:'Eu quero voltar para a escola',g:0,d:'É uma frase afirmativa.'}],
+  bom:'Como você se chama? · Eu gosto de chocolate. · Que dia mais lindo! · Que calor! · Quer ir brincar no balanço? · Eu quero voltar para a escola.'},
+ {t:'mc',p:'Como se chama o sinal <b style="font-size:1.4rem;">?</b>',o:['ponto de interrogação','ponto de exclamação','ponto final','vírgula'],c:0,ex:{1:'O ponto de exclamação é o !',2:'O ponto final é o .',3:'A vírgula é a ,'},bom:'? = ponto de interrogação.'},
+ {t:'mc',p:'Como se chama o sinal <b style="font-size:1.4rem;">!</b>',o:['ponto de exclamação','ponto de interrogação','ponto final','vírgula'],c:0,ex:{1:'O ponto de interrogação é o ?',2:'O ponto final é o .',3:'A vírgula é a ,'},bom:'! = ponto de exclamação.'},
+ {t:'mc',p:'Como se chama o sinal <b style="font-size:1.4rem;">.</b>',o:['ponto final','vírgula','ponto de exclamação','ponto de interrogação'],c:0,ex:{1:'A vírgula é a ,',2:'O ponto de exclamação é o !',3:'O ponto de interrogação é o ?'},bom:'. = ponto final.'},
+ {t:'mc',p:'"Onde eu coloco esta sacola de plástico<b>?</b>" Essa frase é:',o:['interrogativa','exclamativa','afirmativa'],c:0,ex:{1:'Exclamativa termina com !',2:'Afirmativa termina com .'},bom:'Termina com ? → interrogativa (pergunta).'},
+ {t:'mc',p:'"Que calor<b>!</b>" Essa frase é:',o:['exclamativa','interrogativa','afirmativa'],c:0,ex:{1:'Interrogativa termina com ?',2:'Afirmativa termina com .'},bom:'Termina com ! → exclamativa.'},
+ {t:'mc',p:'"Eu gosto de chocolate<b>.</b>" Essa frase é:',o:['afirmativa','interrogativa','exclamativa'],c:0,ex:{1:'Interrogativa termina com ?',2:'Exclamativa termina com !'},bom:'Termina com . → afirmativa.'},
+ {t:'mc',p:'Qual sinal completa? "Onde fica o lixo reciclado ___"',o:['?','.','!'],c:0,ex:{1:'É uma pergunta: começa com "Onde".',2:'É uma pergunta: começa com "Onde".'},bom:'Onde fica o lixo reciclado?'},
+ {t:'mc',p:'Na folha "Recorte e cole", em que coluna vai "Ah, não<b>!</b>"?',o:['na coluna do !','na coluna do .','na coluna do ?'],c:0,ex:{1:'Olhe o sinal no fim: é !',2:'Não é pergunta. O sinal no fim é !'},bom:'Ah, não! → coluna do ponto de exclamação.'},
+ {t:'mc',p:'Qual palavra está escrita <b>certinha</b>?',o:['exclamação','esclamação','exclamassão','isclamação'],c:0,ex:{1:'É com X: eXclamação.',2:'É com Ç: exclamaÇão.',3:'Começa com E: Exclamação.'},bom:'E-X-C-L-A-M-A-Ç-Ã-O.'},
+ {t:'mc',p:'Qual palavra está escrita <b>certinha</b>?',o:['interrogativa','interogativa','enterrogativa','interrogatiba'],c:0,ex:{1:'É com RR: inteRRogativa.',2:'Começa com I: Interrogativa.',3:'É com V: interrogatiVa.'},bom:'I-N-T-E-R-R-O-G-A-T-I-V-A.'}
+],
+4:[
+ {t:'mc',p:'Qual frase é uma <b>pergunta</b> escrita certinha?',o:['Quer ser meu amigo?','Quer ser meu amigo.'],c:0,ex:{1:'Pergunta termina com ?'},bom:'Quer ser meu amigo?'},
+ {t:'mc',p:'🎈👧😀 A menina está feliz com os balões. Qual frase usa o <b>ponto de exclamação</b>?',o:['A menina está feliz com o balão!','A menina está feliz com o balão?'],c:0,ex:{1:'Essa termina com ? (ponto de interrogação).'},bom:'A menina está feliz com o balão!'},
+ {t:'mc',p:'⚽🥅 Hora do gol! Qual frase fica certa?',o:['Gooool!','Gooool?'],c:0,ex:{1:'Ninguém está perguntando nada: é um grito de gol!'},bom:'Gooool!'},
+ {t:'ord',p:'Monte a pergunta do caderno:',w:['Quer','ser','meu','amigo?'],bom:'Quer ser meu amigo?'},
+ {t:'ord',p:'Monte a frase do caderno:',w:['A menina','está','feliz','com o balão!'],bom:'A menina está feliz com o balão!'},
+ {t:'esc',id:'f_pergunta',tit:'❓ Frase com ponto de interrogação',sinal:'?',
+  enun:'Olhe a cena: 🪁 👧 👦 🌳 crianças brincando no parque. Escreva UMA PERGUNTA sobre a cena. Termine com o ponto de interrogação.',
+  modelo:'Onde as crianças brincam?',
+  chk:['Minha frase é uma <b>pergunta</b>?','Ela termina com <b>?</b>','Ela fala da <b>cena do parque</b>?']},
+ {t:'esc',id:'f_exclama',tit:'❗ Frase com ponto de exclamação',sinal:'!',
+  enun:'Olhe: 🐶 um cachorrinho. Escreva uma frase EXCLAMATIVA sobre ele. Termine com o ponto de exclamação.',
+  modelo:'Esse cachorro é muito fofinho!',
+  chk:['Minha frase fala do <b>cachorro</b>?','Ela termina com <b>!</b>','Escrevi as palavras com cuidado, letra por letra?']},
+ {t:'esc',id:'f_afirma',tit:'⚫ Frase com ponto final',sinal:'.',
+  enun:'Olhe: 👦 ⚽ 👦 dois meninos com uma bola. Escreva uma frase AFIRMATIVA sobre eles. Termine com o ponto final.',
+  modelo:'O menino joga futebol.',
+  chk:['Minha frase fala dos <b>meninos</b> e da <b>bola</b>?','Ela termina com <b>.</b> (ponto final)?','Escrevi as palavras com cuidado, letra por letra?']}
+],
+5:[
+ {t:'grp',p:'Diminutivo, normal ou aumentativo?',grupos:['🤏 Diminutivo','😐 Normal','🐘 Aumentativo'],
+  itens:[{e:'🐥',n:'patinho',g:0,d:'Patinho é pequeno: diminutivo.'},
+         {e:'🦆',n:'pato',g:1,d:'Pato é o grau normal.'},
+         {e:'🦢',n:'patão',g:2,d:'Patão é grande: aumentativo.'},
+         {e:'🏚️',n:'casarão',g:2,d:'Casarão: aumentativo de casa.'},
+         {e:'🧱',n:'murinho',g:0,d:'Murinho: diminutivo de muro.'},
+         {e:'👞',n:'sapato',g:1,d:'Sapato é o grau normal.'}],
+  bom:'Diminutivo: patinho, murinho · Normal: pato, sapato · Aumentativo: patão, casarão.'},
+ {t:'mc',p:'Qual é o <b>diminutivo</b> de <b>chapéu</b>? 🎩',o:['chapeuzinho','chapezinho','chapéuzinha','chapelão'],c:0,ex:{1:'Faltou o U: chapeUzinho.',2:'Fica chapeuzinho, com -zinho.',3:'Chapelão é o aumentativo.'},bom:'chapéu → chapeuzinho.'},
+ {t:'mc',p:'Qual é o <b>diminutivo</b> de <b>borboleta</b>? 🦋',o:['borboletinha','borboletinho','borbolinha','broletinha'],c:0,ex:{1:'Borboleta termina com A: borboletinha.',2:'Faltou um pedaço: borbo-le-ti-nha.',3:'Começa com BOR: borboletinha.'},bom:'borboleta → borboletinha.'},
+ {t:'mc',p:'Qual é o <b>diminutivo</b> de <b>menino</b>? 👦',o:['menininho','meninão','menininha','meninho'],c:0,ex:{1:'Meninão é o aumentativo.',2:'Menininha é de menina.',3:'Faltou um pedaço: me-ni-ni-nho.'},bom:'menino → menininho.'},
+ {t:'mc',p:'Qual é o <b>diminutivo</b> de <b>montanha</b>? ⛰️',o:['montanhinha','montanhão','montaninha','montinha'],c:0,ex:{1:'Montanhão é o aumentativo.',2:'Faltou o H: montaNHinha.',3:'Montinha vem de outra palavra (monte).'},bom:'montanha → montanhinha.'},
+ {t:'mc',p:'Qual é o <b>diminutivo</b> de <b>gafanhoto</b>? 🦗',o:['gafanhotinho','gafinho','gafanhotão','gafanhotinha'],c:0,ex:{1:'Faltou um pedaço: ga-fa-nho-ti-nho.',2:'Gafanhotão é o aumentativo.',3:'Gafanhoto termina com O: gafanhotinho.'},bom:'gafanhoto → gafanhotinho.'},
+ {t:'mc',p:'Qual é o <b>aumentativo</b> de <b>amigo</b>? 🐶',o:['amigão','amiga','amiguinho','amigozinho'],c:0,ex:{1:'Amiga é outra palavra, não é aumentativo.',2:'Amiguinho é o diminutivo.',3:'Amigozinho não é aumentativo.'},bom:'amigo → amigão.'},
+ {t:'mc',p:'Qual é o <b>aumentativo</b> de <b>chapéu</b>?',o:['chapelão','chapeuzinho','chapezão','chapéu'],c:0,ex:{1:'Chapeuzinho é o diminutivo.',2:'No caderno está CHAPELÃO.',3:'Chapéu é o normal.'},bom:'chapéu → chapelão.'},
+ {t:'mc',p:'"Tira um <b>sonecão</b>." Sonecão é uma soneca:',o:['demorada','rápida'],c:0,ex:{1:'Sonecão está no aumentativo: soneca grande, demorada.'},bom:'Sonecão = soneca demorada.'},
+ {t:'mc',p:'Complete com <b>uma só palavra</b> que quer dizer "cachorro grande": "O ___ faz quando está com sono?"',o:['cachorrão','cachorrinho','cachorro'],c:0,ex:{1:'Cachorrinho é pequeno.',2:'Cachorro é o normal; precisa ser grande.'},bom:'cachorro grande = cachorrão.'},
+ {t:'mc',p:'Chamar o bichinho de "amiguinho" ou "amigão" é um jeito:',o:['carinhoso','negativo'],c:0,ex:{1:'O livro diz que essas formas são carinhosas.'},bom:'Jeito carinhoso, afetivo.'},
+ {t:'mc',p:'Na quadrinha, qual palavra está no <b>aumentativo</b>?',vis:QUADRINHA,o:['sorvetão','sorvetinho','dinheirinho','limão'],c:0,ex:{1:'Sorvetinho é diminutivo.',2:'Dinheirinho é diminutivo.',3:'Limão é o nome normal da fruta.'},bom:'sorvetão = aumentativo de sorvete.'}
+],
+6:[
+ {t:'grp',p:'O som do R é <b>forte</b> ou <b>fraco</b> (brando)?',grupos:['💪 Forte','🪶 Fraco'],
+  itens:[{e:'🛞',n:'roda',g:0,d:'R no início: som forte.'},
+         {e:'🦜',n:'arara',g:1,d:'Arara: r brando, fraco.'},
+         {e:'🚗',n:'carro',g:0,d:'RR: som forte.'},
+         {e:'🐊',n:'jacaré',g:1,d:'Jacaré: r fraco, como em carinho.'},
+         {e:'🐟',n:'arraia',g:0,d:'RR: som forte.'},
+         {e:'🕷️',n:'aranha',g:1,d:'Aranha: r fraco.'},
+         {e:'🐦',n:'rouxinol',g:0,d:'R no início: som forte.'},
+         {e:'🦜',n:'periquito',g:1,d:'Periquito: r fraco.'}],
+  bom:'Forte: roda, carro, arraia, rouxinol · Fraco: arara, jacaré, aranha, periquito.'},
+ {t:'mc',p:'Complete: amo<b>__</b>a',o:['r','rr'],c:0,ex:{1:'Com rr ficaria "amorra", que está errado.'},bom:'amora — um r só.'},
+ {t:'mc',p:'Complete: co<b>__</b>ida 🏃',o:['rr','r'],c:0,ex:{1:'Com um r só ficaria "corida", que está errado.'},bom:'corrida — com rr.'},
+ {t:'mc',p:'Complete: ca<b>__</b>acol 🐌',o:['r','rr'],c:0,ex:{1:'O som é fraco: caracol tem um r só.'},bom:'caracol — um r só.'},
+ {t:'mc',p:'Complete: cacho<b>__</b>o 🐶',o:['rr','r'],c:0,ex:{1:'O som é forte: cachorro tem rr.'},bom:'cachorro — com rr.'},
+ {t:'mc',p:'Complete: ga<b>__</b>afa 🍾',o:['rr','r'],c:0,ex:{1:'O som é forte: garrafa tem rr.'},bom:'garrafa — com rr.'},
+ {t:'mc',p:'Na palavra <b>jacaré</b>, o r tem som:',o:['fraco, como em carinho','forte, como em marreco'],c:0,ex:{1:'Marreco tem rr, som forte. Jacaré tem r fraco.'},bom:'jacaré: r fraco.'},
+ {t:'mc',p:'Em <b>brigadeiro</b> e <b>cravo</b>, o r vem depois de consoante. Ele é o:',o:['R intrometido','R caipira','R do início','RR'],c:0,ex:{1:'R caipira é como em porta e árvore.',2:'Aqui o r não está no início.',3:'Aqui não tem rr.'},bom:'R intrometido = depois de consoante.'},
+ {t:'mc',p:'Em <b>porta</b>, <b>árvore</b> e <b>amor</b>, o r é o:',o:['R caipira','R intrometido','RR','R do início'],c:0,ex:{1:'R intrometido vem depois de consoante, como em cravo.',2:'Aqui não tem rr.',3:'Aqui o r não está no início.'},bom:'R caipira: porta, árvore, caderno, amor, arco.'},
+ {t:'mc',p:'No trava-língua, quais palavras têm <b>rr</b>?',o:['jarra e arranha','aranha e cama','aranha e jarra','debaixo e cama'],c:0,ex:{1:'Aranha tem um r só e cama não tem r.',2:'Jarra tem rr, mas aranha tem um r só.',3:'Essas não têm rr.'},bom:'jaRRa e aRRanha.'},
+ {t:'mc',p:'Tire a primeira sílaba de <b>sorriso</b>. Que palavra sobrou?',o:['riso','sorri','rriso','iso'],c:0,ex:{1:'Sorri tirou o final, não a primeira sílaba.',2:'No começo da palavra se escreve com um r só.',3:'Tirou letras demais.'},bom:'sor-riso → riso.'},
+ {t:'duo',p:'Verdadeiro ou falso?<div class="frase">Em palavras começadas com r, como rosa, o r tem som forte.</div>',o:VF,c:0,bom:'Verdadeiro! R no início = som forte.'}
+]
+};
+
+/* --- Show Final (10 questões) --- */
+var FINAL=[
+ {p:'Na história do caderno, onde a bola de ouro caiu?',o:['no fundo de um lago escuro','no jardim do castelo','no quarto do rei','na casa da bruxa'],c:0,ex:{1:'Ela brincava no jardim, mas a bola caiu no lago.',2:'A bola não foi para o quarto do rei.',3:'A bruxa não aparece nessa parte.'}},
+ {p:'O que o rei ensinou para a princesa?',o:['Se você prometeu, você deve cumprir!','Sapo não pode entrar no castelo.','Nunca chore.','Bola de ouro é perigosa.'],c:0,ex:{1:'O rei recebeu o sapo e ouviu a história.',2:'O rei não disse isso.',3:'O rei não disse isso.'}},
+ {p:'Cada <b>linha</b> de um poema se chama:',o:['verso','estrofe','rima','título'],c:0,ex:{1:'Estrofe é o conjunto de versos.',2:'Rima é o som parecido no final.',3:'Título é o nome do poema.'}},
+ {p:'Quantas <b>estrofes</b> tem esta quadrinha?'+QUADRINHA,o:['1','4','2','3'],c:0,ex:{1:'4 é o número de versos.',2:'Os versos estão num grupo só.',3:'Os versos estão num grupo só.'}},
+ {p:'Qual palavra <b>rima</b> com <b>balcão</b>?',o:['confusão','biscoito','custo','careta'],c:0,ex:{1:'Biscoito rima com gafanhoto.',2:'Custo rima com susto.',3:'Careta rima com borboleta.'}},
+ {p:'Qual sinal completa? "Como você se chama ___"',o:['?','!','.'],c:0,ex:{1:'É uma pergunta: o sinal é ?',2:'É uma pergunta: o sinal é ?'}},
+ {p:'"Que dia mais lindo<b>!</b>" Essa frase é:',o:['exclamativa','interrogativa','afirmativa'],c:0,ex:{1:'Interrogativa termina com ?',2:'Afirmativa termina com .'}},
+ {p:'Qual é o <b>diminutivo</b> de <b>chapéu</b>?',o:['chapeuzinho','chapezinho','chapelão','chapéuzinha'],c:0,ex:{1:'Faltou o U: chapeUzinho.',2:'Chapelão é o aumentativo.',3:'Fica chapeuzinho.'}},
+ {p:'Qual é o <b>aumentativo</b> de <b>amigo</b>?',o:['amigão','amiga','amiguinho','amigozinho'],c:0,ex:{1:'Amiga é outra palavra, não é aumentativo.',2:'Amiguinho é o diminutivo.',3:'Amigozinho não é aumentativo.'}},
+ {p:'Qual grupo está <b>todo certinho</b>?',o:['amora · corrida · caracol','amorra · corida · carracol','amora · corida · caracol','amorra · corrida · carracol'],c:0,ex:{1:'Amora e caracol têm um r só; corrida tem rr.',2:'Corrida tem rr.',3:'Amora e caracol têm um r só.'}}
+];
+var SEMENTE="lg1";
+/* Espalha a resposta certa entre A, B, C e D de forma CONFERIDA (não só sorteada):
+   cada questão recebe uma posição fixa em rodízio; a certa é guardada pelo índice
+   do novo arranjo e os comentários (ex) acompanham cada alternativa. */
+function balancear(lista){
+  var seq={2:[1,0],3:[1,2,0],4:[2,0,3,1]}, cont={2:0,3:0,4:0};
+  lista.forEach(function(q){
+    if(q.t && q.t!=='mc') return;
+    var n=q.o.length; if(!seq[n]) return;
+    var alvo=seq[n][cont[n]%seq[n].length]; cont[n]++;
+    var erradas=[], i; for(i=0;i<n;i++) if(i!==q.c) erradas.push(i);
+    var perm=[]; for(i=0;i<n;i++) perm.push(i===alvo?q.c:erradas.shift());
+    var no=[], nex={};
+    for(i=0;i<n;i++){ no.push(q.o[perm[i]]); if(q.ex && q.ex[perm[i]]!==undefined) nex[i]=q.ex[perm[i]]; }
+    q.o=no; q.ex=nex; q.c=alvo; q.fixo=true;
+  });
+}
+(function(){ var p; for(p in JOGO) balancear(JOGO[p]); balancear(FINAL); })();
+
+/* =========================================================
+   ARMAZENAMENTO (à prova de bloqueio)
+   ========================================================= */
+var KEY='lagoa_encantada_2ano_v1';
+var TKEY='lagoa_encantada_2ano_trilha_v1';
+var MEM={};
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return MEM[k]||null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){ MEM[k]=v; } }
+function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} delete MEM[k]; }
+function letras(){ var L='ABCDEFGHJKLMNPQRSTUVWXYZ'; return L[Math.floor(Math.random()*L.length)]+L[Math.floor(Math.random()*L.length)]; }
+function novoEstado(){
+  return { fases:{}, escrita:{}, mural:{concluido:false,maxPct:0},
+           finalScore:null, finalCode:null, finalDet:null, finalConc:false, finalEm:null,
+           codeLetters:null, quando:null };
+}
+function arrumar(o){
+  if(!o.fases)o.fases={}; if(!o.escrita)o.escrita={};
+  if(!o.mural)o.mural={concluido:false,maxPct:0};
+  if(!o.codeLetters)o.codeLetters=letras();
+  return o;
+}
+var S=novoEstado(), T={liberadoPelosPais:false,liberadoEm:null};
+(function carregar(){
+  var raw=lsGet(KEY);
+  if(raw){ try{ var o=JSON.parse(raw); if(o&&typeof o==='object') S=o; }catch(e){} }
+  arrumar(S);
+  var rt=lsGet(TKEY);
+  if(rt){ try{ var t=JSON.parse(rt); if(t&&typeof t==='object') T=t; }catch(e){} }
+})();
+function save(){
+  S.quando=new Date().toLocaleString('pt-BR');
+  lsSet(KEY,JSON.stringify(S));
+  var el=document.getElementById('saveInfo');
+  if(el) el.textContent='Progresso salvo automaticamente · '+S.quando;
+}
+function saveT(){ lsSet(TKEY,JSON.stringify(T)); }
+
+/* =========================================================
+   UTILIDADES (sem áudio)
+   ========================================================= */
+function modal(title,msg,onOk,withCancel){
+  document.getElementById('mdTitle').innerHTML=title;
+  document.getElementById('mdMsg').innerHTML=msg;
+  var m=document.getElementById('mask'), ok=document.getElementById('mdOk'), ca=document.getElementById('mdCancel');
+  ca.style.display=withCancel?'block':'none';
+  ok.onclick=function(){ m.classList.remove('on'); if(onOk)onOk(); };
+  ca.onclick=function(){ m.classList.remove('on'); };
+  m.classList.add('on');
+}
+function confetti(n){
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  var cores=['#3F9E4D','#2B86C5','#F2B705','#E8608E','#FFFFFF'], i;
+  for(i=0;i<(n||30);i++){ (function(i){
+    var d=document.createElement('div'); d.className='conf';
+    d.style.left=(Math.random()*100)+'vw'; d.style.background=cores[i%cores.length];
+    d.style.animation='fall '+(1.6+Math.random()*1.2)+'s linear forwards'; d.style.animationDelay=(Math.random()*.5)+'s';
+    document.body.appendChild(d); setTimeout(function(){ if(d.parentNode)d.parentNode.removeChild(d); },3600);
+  })(i); }
+}
+function hashStr(s){ var h=5381,i; for(i=0;i<s.length;i++){ h=((h*33)+s.charCodeAt(i))>>>0; } return h; }
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0;
+  var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function shuffleSeeded(arr,key){
+  var r=mulberry32(hashStr(key)), a=arr.slice(), i,j,t;
+  for(i=a.length-1;i>0;i--){ j=Math.floor(r()*(i+1)); t=a[i]; a[i]=a[j]; a[j]=t; }
+  return a;
+}
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function dataBR(iso){ try{ return new Date(iso).toLocaleString('pt-BR'); }catch(e){ return iso; } }
+
+/* =========================================================
+   TRILHA COM CADEADOS
+   etapas 0..5 = folhas 1..6 · 6 = Mural · 7 = Show Final
+   ========================================================= */
+var ETAPAS=[
+ {nome:TITULOS[1]},{nome:TITULOS[2]},{nome:TITULOS[3]},{nome:TITULOS[4]},{nome:TITULOS[5]},{nome:TITULOS[6]},
+ {nome:'🗺️ Mural da Lagoa'},{nome:'🌟 Show Final na Lagoa'}
+];
+function feita(i){
+  if(i<=5){ var f=S.fases[i+1]; return !!(f&&f.concluido); }
+  if(i===6) return !!(S.mural&&S.mural.concluido);
+  return !!S.finalConc;
+}
+function quandoFeita(i){
+  if(i<=5){ var f=S.fases[i+1]; return f?f.concluidoEm:null; }
+  if(i===6) return S.mural.concluidoEm||null;
+  return S.finalEm||null;
+}
+function aberta(i){ return i===0 || T.liberadoPelosPais || feita(i) || feita(i-1); }
+function entregasFaltando(){ var n=0,i; for(i=0;i<=5;i++) if(!feita(i)) n++; return n; }
+function fraseTrava(i){
+  if(i>=1&&i<=5) return '🔒 Destrava quando você concluir a folha '+i+' — '+TITULOS[i]+'.';
+  if(i===6) return '🔒 Destrava quando você concluir as 6 folhas (faltam '+entregasFaltando()+').';
+  return '🔒 Destrava quando você ler o Mural da Lagoa até o fim e clicar em "✅ Li o mural até o fim".';
+}
+function openStep(i){
+  if(!aberta(i)){ modal('🔒 Esta etapa ainda está trancada',fraseTrava(i).replace('🔒 ','')); return; }
+  if(i<=5) startP(i+1);
+  else if(i===6) abrirMural();
+  else startFinal();
+}
+
+function go(id){
+  var all=document.querySelectorAll('.screen'), i;
+  for(i=0;i<all.length;i++) all[i].classList.remove('on');
+  document.getElementById(id).classList.add('on');
+  window.scrollTo(0,0);
+  if(id==='scr-menu') refreshMenu();
+  if(id==='scr-mural') checarRolagem();
+}
+
+function refreshMenu(){
+  var i, n=0, h='', primeiroNovo=-1;
+  for(i=1;i<=6;i++){
+    var on=feita(i-1); if(on) n++;
+    document.getElementById('ov'+i).classList.toggle('on',on);
+  }
+  document.getElementById('trayLabel').textContent = n===0 ? '🟡 Bolas de ouro: nenhuma ainda' : ('🟡 Bolas de ouro: '+n+' de 6');
+  for(i=1;i<ETAPAS.length;i++){ if(aberta(i)&&!feita(i)&&!T.liberadoPelosPais){ primeiroNovo=i; break; } }
+  for(i=0;i<ETAPAS.length;i++){
+    var ab=aberta(i), fe=feita(i), cls='btn';
+    if(i===6) cls+=' green'; if(i===7) cls+=' yellow';
+    if(!ab) cls='btn locked';
+    if(i===primeiroNovo) cls+=' glow';
+    var rotulo=(i<=5?(i+1)+'. ':'')+ETAPAS[i].nome;
+    var selo= fe ? '<span class="selo ok">✅ Concluído</span>' : (i===primeiroNovo ? '<span class="selo novo">✨ Novo destravado</span>' : '');
+    h+='<button class="'+cls+'" id="mb'+i+'" onclick="openStep('+i+')">'+(ab?'':'🔒 ')+rotulo+selo+'</button>';
+    var desc = i<=5 ? DESC[i+1] : (i===6 ? 'O mural de revisão para ler com um adulto na véspera.' : '10 questões misturando tudo. Gera o código para os pais.');
+    h+='<p class="menu-desc'+(ab?'':' lock')+'" id="md'+i+'">'+(ab?desc:fraseTrava(i))+'</p>';
+  }
+  document.getElementById('menuList').innerHTML=h;
+  document.getElementById('paisSelo').innerHTML = T.liberadoPelosPais
+    ? '<div class="paisbox">🔓 Trilha liberada pelos pais — todos os materiais estão abertos. <button class="btn ghost small" style="margin:6px 0 0;" onclick="trancarDeNovo()">🔒 Trancar de novo</button></div>' : '';
+  if(S.quando) document.getElementById('saveInfo').textContent='Progresso salvo automaticamente · '+S.quando;
+}
+
+/* =========================================================
+   PÍLULAS
+   ========================================================= */
+var P={fase:1,idx:0};
+function startP(p){
+  P={fase:p,idx:0};
+  document.getElementById('pillTitle').textContent=PILLS[p].t;
+  renderPill(); go('scr-pill');
+}
+function renderPill(){
+  var lista=PILLS[P.fase].p, it=lista[P.idx], i, h='';
+  h+='<div class="pill-emoji">'+it.e+'</div><div class="pill-text">'+it.x+'</div>';
+  if(it.y) h+='<div class="pill-extra">'+it.y+'</div>';
+  document.getElementById('pillBox').innerHTML=h;
+  var d=''; for(i=0;i<lista.length;i++) d+='<i class="'+(i<=P.idx?'on':'')+'"></i>';
+  document.getElementById('pillDots').innerHTML=d;
+  var bt=document.getElementById('pillNext');
+  bt.textContent=(P.idx===lista.length-1)?'Agora vamos treinar! 🐸':'Entendi! Próximo ➡️';
+  bt.onclick=function(){ if(P.idx<lista.length-1){ P.idx++; renderPill(); window.scrollTo(0,0); } else startGame(P.fase); };
+}
+
+/* =========================================================
+   MOTOR DOS MINIJOGOS
+   ========================================================= */
+var G={};
+function area(){ return document.getElementById('gameArea'); }
+function fbEl(){ return document.getElementById('gameFb'); }
+function nextBtn(){ return document.getElementById('gameNext'); }
+function setCount(t){ document.getElementById('gameCount').textContent=t; }
+function showFb(ok,html){ var f=fbEl(); f.className='fb on '+(ok?'good':'bad'); f.innerHTML=html; }
+function clearFb(){ var f=fbEl(); f.className='fb'; f.innerHTML=''; }
+
+function ordemOpcoes(q,key){
+  var idx=q.o.map(function(_,i){return i;});
+  return q.fixo ? idx : shuffleSeeded(idx,key);
+}
+function renderMC(q,key,onPick){
+  var ordem=ordemOpcoes(q,key), h='', k;
+  h+='<div class="q-text">'+q.p+'</div>';
+  if(q.vis) h+=q.vis;
+  if(q.t==='duo'){
+    h+='<div class="duo">';
+    for(k=0;k<q.o.length;k++) h+='<button class="opt" data-oi="'+k+'">'+q.o[k]+'</button>';
+    h+='</div>';
+  } else {
+    for(k=0;k<ordem.length;k++) h+='<button class="opt" data-oi="'+ordem[k]+'">'+q.o[ordem[k]]+'</button>';
+  }
+  area().innerHTML=h;
+  var btns=area().querySelectorAll('.opt'), i;
+  for(i=0;i<btns.length;i++) btns[i].addEventListener('click',function(){ onPick(this,parseInt(this.getAttribute('data-oi'),10)); });
+}
+function markMC(btn,oi,q){
+  var btns=area().querySelectorAll('.opt'), i, acertou=(oi===q.c);
+  for(i=0;i<btns.length;i++){
+    var idx=parseInt(btns[i].getAttribute('data-oi'),10); btns[i].disabled=true;
+    if(idx===q.c) btns[i].classList.add('ok'); else if(btns[i]===btn) btns[i].classList.add('no');
+  }
+  if(acertou) showFb(true,'✅ <b>Boa! É isso mesmo.</b> '+(q.bom||''));
+  else showFb(false,'💛 <b>Quase! Vamos aprender juntos.</b><br>'+((q.ex&&q.ex[oi])?q.ex[oi]+'<br>':'')+
+    'A resposta certa é <b>'+q.o[q.c]+'</b>. '+(q.bom||''));
+  return acertou;
+}
+
+function startGame(p){
+  for(var k in S.escrita){ if(S.escrita[k]){ S.escrita[k].contado=false; S.escrita[k].pontuado=false; } }
+  G={p:p, idx:0, acertos:0, total:0};
+  document.getElementById('gameTitle').textContent=TITULOS[p]+' — hora de treinar';
+  go('scr-game'); g_render();
+}
+function g_render(){
+  clearFb(); nextBtn().style.display='none';
+  var lista=JOGO[G.p], it=lista[G.idx];
+  setCount('Desafio '+(G.idx+1)+' de '+lista.length+' · ⭐ '+G.acertos);
+  if(it.t==='grp') return g_grp(it);
+  if(it.t==='esc') return g_esc(it);
+  if(it.t==='ord') return g_ord(it);
+  renderMC(it,'p'+G.p+'q'+G.idx+SEMENTE,function(btn,oi){
+    if(markMC(btn,oi,it)) G.acertos++;
+    G.total++; g_next();
+  });
+}
+function g_next(){
+  var lista=JOGO[G.p];
+  nextBtn().style.display='block';
+  nextBtn().textContent=(G.idx===lista.length-1)?'Terminar a folha 🟡':'Continuar ➡️';
+  nextBtn().onclick=function(){
+    if(G.idx<lista.length-1){ G.idx++; g_render(); window.scrollTo(0,0); }
+    else winFase(G.p,G.acertos,G.total);
+  };
+}
+
+/* separar em grupos: um item por vez, a criança toca no grupo certo */
+function g_grp(it){
+  var h='', k;
+  G.grpOrdem=shuffleSeeded(it.itens.map(function(_,i){return i;}),'grp'+G.p+'_'+G.idx);
+  G.grpPos=0; G.grpErros=0; G.grpItem=it;
+  h+='<div class="q-text">'+it.p+'</div><div class="grp-card" id="grpCard"></div><div class="grp-btns">';
+  for(k=0;k<it.grupos.length;k++) h+='<button class="opt grpb" data-g="'+k+'">'+it.grupos[k]+'</button>';
+  h+='</div><div class="baskets">';
+  for(k=0;k<it.grupos.length;k++) h+='<div class="basket"><b>'+it.grupos[k]+'</b><div id="bk'+k+'"></div></div>';
+  h+='</div>';
+  area().innerHTML=h;
+  var bts=area().querySelectorAll('.grpb'), i;
+  for(i=0;i<bts.length;i++) bts[i].addEventListener('click',function(){ grpPick(this,parseInt(this.getAttribute('data-g'),10)); });
+  grpShow();
+}
+function grpShow(){
+  var it=G.grpItem, x=it.itens[G.grpOrdem[G.grpPos]];
+  document.getElementById('grpCard').innerHTML='<div class="pill-emoji">'+x.e+'</div><div class="pill-text">'+x.n+'</div><div class="menu-desc" style="margin:4px 0 0;">'+(G.grpPos+1)+' de '+it.itens.length+'</div>';
+}
+function grpPick(btn,k){
+  var it=G.grpItem; if(G.grpPos>=it.itens.length) return;
+  var x=it.itens[G.grpOrdem[G.grpPos]];
+  if(k===x.g){
+    document.getElementById('bk'+k).innerHTML+='<span class="chip">'+x.e+' '+x.n+'</span>';
+    G.grpPos++; clearFb();
+    if(G.grpPos===it.itens.length){
+      var bts=area().querySelectorAll('.grpb'), i; for(i=0;i<bts.length;i++) bts[i].disabled=true;
+      document.getElementById('grpCard').innerHTML='<div class="pill-emoji">📦</div><div class="pill-text">Tudo separado!</div>';
+      G.total++;
+      if(G.grpErros===0){ G.acertos++; showFb(true,'✅ <b>Perfeito, tudo no lugar certo de primeira!</b> '+it.bom); }
+      else showFb(true,'✅ <b>Completou!</b> Você errou '+G.grpErros+' vez(es) no caminho. '+it.bom);
+      g_next();
+    } else grpShow();
+  } else {
+    G.grpErros++;
+    btn.classList.remove('shake'); void btn.offsetWidth; btn.classList.add('shake');
+    setTimeout(function(){ btn.classList.remove('shake'); },400);
+    showFb(false,'💛 <b>Quase!</b> '+x.d+' Tente outro grupo.');
+  }
+}
+
+
+/* montar a frase: tocar nas palavras na ordem certa */
+function g_ord(it){
+  var n=it.w.length, idx=[], i;
+  for(i=0;i<n;i++) idx.push(i);
+  var mix=shuffleSeeded(idx,'ord'+G.p+'_'+G.idx+SEMENTE);
+  var igual=true; for(i=0;i<n;i++) if(mix[i]!==i) igual=false;
+  if(igual) mix.push(mix.shift());
+  G.ordMix=mix; G.ordSel=[]; G.ordItem=it; G.ordFeito=false;
+  var h='<div class="q-text">'+it.p+'</div><div class="ord-out" id="ordOut"></div><div class="ord-pool" id="ordPool">';
+  for(i=0;i<n;i++) h+='<button class="opt ordw" data-w="'+mix[i]+'">'+esc(it.w[mix[i]])+'</button>';
+  h+='</div><div class="btn-row"><button class="btn ghost small" id="ordApaga" onclick="ordApagar()">↩️ Apagar</button>'+
+     '<button class="btn green small" id="ordChk" onclick="ordConferir()" disabled>Conferir ✅</button></div>';
+  area().innerHTML=h;
+  var bts=area().querySelectorAll('.ordw');
+  for(i=0;i<bts.length;i++) bts[i].addEventListener('click',function(){ ordPick(this); });
+  ordShow();
+}
+function ordShow(){
+  var it=G.ordItem, h='', i;
+  if(!G.ordSel.length) h='<span class="vazio">Toque nas palavras na ordem certa 👇</span>';
+  for(i=0;i<G.ordSel.length;i++) h+='<span class="chip">'+esc(it.w[G.ordSel[i]])+'</span>';
+  document.getElementById('ordOut').innerHTML=h;
+  var bts=area().querySelectorAll('.ordw');
+  for(i=0;i<bts.length;i++){ var w=parseInt(bts[i].getAttribute('data-w'),10); bts[i].classList.toggle('usado',G.ordSel.indexOf(w)>=0); }
+  document.getElementById('ordChk').disabled=(G.ordFeito||G.ordSel.length<it.w.length);
+}
+function ordPick(btn){
+  if(G.ordFeito) return;
+  var w=parseInt(btn.getAttribute('data-w'),10);
+  if(G.ordSel.indexOf(w)>=0) return;
+  G.ordSel.push(w); ordShow();
+}
+function ordApagar(){ if(G.ordFeito) return; G.ordSel.pop(); ordShow(); }
+function ordConferir(){
+  var it=G.ordItem, i, ok=true;
+  if(G.ordFeito||G.ordSel.length<it.w.length) return;
+  for(i=0;i<it.w.length;i++) if(G.ordSel[i]!==i) ok=false;
+  G.ordFeito=true; G.total++; if(ok) G.acertos++;
+  document.getElementById('ordChk').disabled=true; document.getElementById('ordApaga').disabled=true;
+  var bts=area().querySelectorAll('.ordw'); for(i=0;i<bts.length;i++) bts[i].disabled=true;
+  if(ok) showFb(true,'✅ <b>Boa! A frase ficou na ordem certinha.</b> '+(it.bom||''));
+  else showFb(false,'💛 <b>Quase! Vamos aprender juntos.</b><br>A ordem certa é: <b>'+esc(it.w.join(it.sep||' '))+'</b>');
+  g_next();
+}
+
+/* escrita com anticópia e autoavaliação guiada */
+function norm(s){
+  return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+}
+function palavras(s){ var n=norm(s); return n?n.split(' '):[]; }
+function ehTranscricao(resp,fonte){
+  var a=palavras(resp), b=palavras(fonte), i, j;
+  if(a.length<4) return false;
+  var maiorSeq=0, emSeq=0, marcado=[];
+  for(i=0;i<a.length;i++) marcado.push(false);
+  for(i=0;i<a.length;i++){
+    for(j=0;j<b.length;j++){
+      var k=0; while(i+k<a.length && j+k<b.length && a[i+k]===b[j+k]) k++;
+      if(k>maiorSeq) maiorSeq=k;
+      if(k>=5){ var z; for(z=0;z<k;z++) marcado[i+z]=true; }
+    }
+  }
+  for(i=0;i<marcado.length;i++) if(marcado[i]) emSeq++;
+  return (maiorSeq>=8) || (emSeq/a.length>0.60);
+}
+function g_esc(it){
+  var sv=S.escrita[it.id]||{}, h='';
+  h+='<div class="wbox'+(sv.transcrita?' red':'')+'" id="wb"><h4>'+it.tit+'</h4>';
+  h+='<p style="font-weight:700;font-size:.97rem;">'+it.enun+'</p>';
+  h+='<textarea id="wtxt" placeholder="Escreva aqui com as suas palavras...">'+esc(sv.resp||'')+'</textarea>';
+  h+='<div id="wavisos"></div><button class="btn green small" id="wchk" onclick="escChk()">Conferir ✅</button><div id="wdepois"></div></div>';
+  area().innerHTML=h; G.tentativa=0; G.escItem=it;
+}
+function escChk(){
+  var it=G.escItem, txt=document.getElementById('wtxt').value.trim();
+  if(txt.length<8){ document.getElementById('wavisos').innerHTML='<div class="warn">✏️ Escreva uma frase inteira, contando do seu jeito.</div>'; return; }
+  if(it.sinal && txt.indexOf(it.sinal)<0){ document.getElementById('wavisos').innerHTML='<div class="warn">🐸 Não esqueça: esta frase termina com <b style="font-size:1.2rem;">'+it.sinal+'</b></div>'; return; }
+  var copiou=ehTranscricao(txt,it.enun+' '+(it.fonte||''));
+  var reg0=S.escrita[it.id]||{};
+  if(G.tentativa===1 && reg0.tentou===txt){
+    document.getElementById('wavisos').innerHTML='<div class="warn">✏️ Você ainda não mudou nada. Troque algumas palavras e escreva do SEU jeito antes de conferir de novo.</div>';
+    document.getElementById('wtxt').focus(); return;
+  }
+  G.tentativa=(G.tentativa||0)+1;
+  if(copiou && G.tentativa===1){
+    S.escrita[it.id]=S.escrita[it.id]||{}; S.escrita[it.id].tentou=txt; save();
+    document.getElementById('wavisos').innerHTML='<div class="warn">🐸 Boa parte da sua resposta está igualzinha ao texto.<br>Tente reescrever <b>com as suas palavras</b>: conte do SEU jeito, como se fosse para um amigo, sem olhar o texto. Pode ficar curtinho e simples, o que vale é ser <b>SEU</b>.</div>';
+    document.getElementById('wtxt').focus(); return;
+  }
+  var reg=S.escrita[it.id]||{}; reg.resp=txt; reg.transcrita=!!copiou; reg.chk=reg.chk||{}; reg.quando=new Date().toISOString();
+  S.escrita[it.id]=reg; save();
+  document.getElementById('wchk').disabled=true;
+  document.getElementById('wavisos').innerHTML = copiou ? '<div class="redflag">🔴 Esta resposta ficou marcada para revisar: continua muito parecida com o texto. Se reescrever com as suas palavras, a marca some.</div>' : '';
+  document.getElementById('wb').classList.toggle('red',!!copiou);
+  var h='<div class="modelo"><b>Resposta modelo (um jeito possível):</b><br>'+it.modelo+'</div><div class="chk"><p style="font-weight:900;">Agora confira a SUA resposta:</p>', i;
+  for(i=0;i<it.chk.length;i++){
+    h+='<p>'+it.chk[i]+'</p><div class="yn"><button id="y'+i+'" onclick="escMarca('+i+',1)">Sim 👍</button><button id="n'+i+'" onclick="escMarca('+i+',0)">Ainda não 🤔</button></div>';
+  }
+  h+='</div><div id="chkStatus"></div><button class="btn ghost small" onclick="escReescrever()">✏️ Quero reescrever</button>';
+  document.getElementById('wdepois').innerHTML=h;
+  for(i=0;i<it.chk.length;i++){ var v=reg.chk[i];
+    if(v===1) document.getElementById('y'+i).classList.add('sel-y'); if(v===0) document.getElementById('n'+i).classList.add('sel-n'); }
+  escStatus();
+}
+function escMarca(i,v){
+  var it=G.escItem, reg=S.escrita[it.id]; reg.chk=reg.chk||{}; reg.chk[i]=v; save();
+  document.getElementById('y'+i).classList.toggle('sel-y',v===1);
+  document.getElementById('n'+i).classList.toggle('sel-n',v===0);
+  escStatus();
+}
+function escStatus(){
+  var it=G.escItem, reg=S.escrita[it.id], i, todos=true, algumNao=false;
+  for(i=0;i<it.chk.length;i++){ if(reg.chk[i]===undefined) todos=false; if(reg.chk[i]===0) algumNao=true; }
+  var el=document.getElementById('chkStatus');
+  if(!todos){ el.innerHTML='<div class="warn">Responda Sim ou Ainda não em cada item para continuar.</div>'; nextBtn().style.display='none'; return; }
+  if(!reg.contado){ reg.contado=true; G.total++; }
+  if(algumNao||reg.transcrita){ reg.status='revisar'; el.innerHTML='<div class="warn">🔁 <b>Vale revisar.</b> Conserte o que faltou e clique em "Quero reescrever".</div>'; }
+  else { reg.status='ok'; el.innerHTML='<div class="modelo">✅ <b>Resposta aprovada pelo Sapinho Bilu! Croac!</b></div>'; if(!reg.pontuado){ reg.pontuado=true; G.acertos++; } }
+  save(); g_next();
+}
+function escReescrever(){
+  var reg=S.escrita[G.escItem.id]; if(reg&&reg.contado&&!reg.pontuado){ reg.contado=false; G.total--; }
+  if(reg&&reg.pontuado){ reg.pontuado=false; reg.contado=false; G.acertos--; G.total--; }
+  document.getElementById('wchk').disabled=false; document.getElementById('wdepois').innerHTML='';
+  nextBtn().style.display='none'; document.getElementById('wtxt').focus();
+  G.tentativa=1;
+}
+
+/* =========================================================
+   FIM DE FOLHA
+   ========================================================= */
+function winFase(p,acertos,total){
+  var ant=S.fases[p]||{};
+  S.fases[p]={feita:true, concluido:true, concluidoEm:ant.concluidoEm||new Date().toISOString(),
+              acertos:acertos, total:total, melhor:Math.max(acertos,ant.melhor||0), vezes:(ant.vezes||0)+1};
+  save(); confetti(34);
+  var pc=total?Math.round(acertos*100/total):0;
+  var msg='Você terminou <b>'+TITULOS[p]+'</b> com <b>'+acertos+'</b> de <b>'+total+'</b>.<br>';
+  msg+= pc>=80 ? 'Uhuu! Folha perfeita! 🏅' : (pc>=50 ? 'Muito bem! Se quiser, refaça esta folha depois para fixar. 💪' : 'Você chegou até o fim, que é o mais importante! Vale repetir esta folha mais tarde. 🤗');
+  msg+='<br><br>🟡 Você achou uma <b>bola de ouro</b> embaixo da vitória-régia!';
+  var prox=p;
+  msg+= prox<=5 ? '<br>🔓 Destravou: <b>'+TITULOS[prox+1]+'</b>.' : '<br>🔓 Destravou: <b>🗺️ Mural da Lagoa</b>.';
+  document.getElementById('wonMsg').innerHTML=msg;
+  var bt=document.getElementById('wonNext');
+  bt.textContent = prox<=5 ? ('Próxima folha: '+TITULOS[prox+1]+' ➡️') : 'Ler o Mural da Lagoa ➡️';
+  bt.onclick=function(){ openStep(prox); };
+  go('scr-won');
+}
+
+/* =========================================================
+   MURAL (cartaz) — concluído ao rolar até o fim + botão
+   ========================================================= */
+function abrirMural(){
+  go('scr-mural'); atualizarBotaoMural();
+}
+function checarRolagem(){
+  if(!document.getElementById('scr-mural').classList.contains('on')) return;
+  var doc=document.documentElement, alto=Math.max(doc.scrollHeight,document.body.scrollHeight);
+  var pct=Math.min(100,Math.round(((window.scrollY||doc.scrollTop)+window.innerHeight)*100/alto));
+  if(pct>(S.mural.maxPct||0)){ S.mural.maxPct=pct; if(pct>=90) save(); }
+  atualizarBotaoMural();
+}
+function atualizarBotaoMural(){
+  var b=document.getElementById('btnLiMural'), pr=document.getElementById('btnProntoFinal'), hint=document.getElementById('muralHint');
+  if(S.mural.concluido){ b.disabled=true; b.textContent='✅ Mural lido até o fim'; pr.style.display='block'; hint.textContent='Muito bem! O Show Final está destravado.'; return; }
+  b.disabled=(S.mural.maxPct||0)<90;
+  hint.textContent=b.disabled?'O botão acende quando você rolar até o fim do mural.':'Pode clicar!';
+}
+window.addEventListener('scroll',checarRolagem,{passive:true});
+function concluirMural(){
+  if((S.mural.maxPct||0)<90) return;
+  S.mural.concluido=true; S.mural.concluidoEm=new Date().toISOString(); save(); confetti(30);
+  atualizarBotaoMural();
+}
+
+/* =========================================================
+   SHOW FINAL
+   ========================================================= */
+function startFinal(){
+  if(!aberta(7)){ modal('🔒 Ainda não',fraseTrava(7).replace('🔒 ','')); return; }
+  G={p:'F', idx:0, acertos:0, det:[], ordem:shuffleSeeded(FINAL.map(function(_,i){return i;}),'finalq'+SEMENTE)};
+  document.getElementById('gameTitle').textContent='🌟 Show Final na Lagoa';
+  go('scr-game'); f_render();
+}
+function f_render(){
+  clearFb(); nextBtn().style.display='none';
+  var q=FINAL[G.ordem[G.idx]];
+  setCount('Questão '+(G.idx+1)+' de '+FINAL.length+' · ⭐ '+G.acertos);
+  renderMC(q,'fin'+G.ordem[G.idx]+SEMENTE,function(btn,oi){
+    var ok=markMC(btn,oi,q); if(ok) G.acertos++;
+    G.det.push({q:q.p.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim(),marcou:q.o[oi],certa:q.o[q.c],ok:ok});
+    nextBtn().style.display='block';
+    nextBtn().textContent=(G.idx===FINAL.length-1)?'Ver o resultado 🌟':'Continuar ➡️';
+    nextBtn().onclick=function(){ if(G.idx<FINAL.length-1){ G.idx++; f_render(); window.scrollTo(0,0); } else f_end(); };
+  });
+}
+function f_end(){
+  S.finalScore=G.acertos; S.finalDet=G.det;
+  S.finalCode='SIM-'+(G.acertos<10?'0':'')+G.acertos+'-'+S.codeLetters;
+  S.finalConc=true; if(!S.finalEm) S.finalEm=new Date().toISOString();
+  save(); confetti(60);
+  document.getElementById('fimScore').textContent='Você acertou '+G.acertos+' de '+FINAL.length+'!';
+  var pc=Math.round(G.acertos*100/FINAL.length), m;
+  if(pc>=90) m='A lagoa inteira brilhou! Você está prontíssima(o) para a verificação. 🥇';
+  else if(pc>=70) m='Muito bom! Dê mais uma lida no Mural da Lagoa e fica craque. 👏';
+  else if(pc>=50) m='Bom trabalho! Refaça as folhas em que teve dúvida. 💪';
+  else m='Você chegou até o fim, isso é o que vale! Vamos repetir as folhas com um adulto. 🤗';
+  document.getElementById('fimMsg').textContent=m;
+  document.getElementById('fimCode').textContent=S.finalCode;
+  go('scr-fim');
+}
+
+/* =========================================================
+   ÁREA DOS PAIS
+   ========================================================= */
+function codigoValido(){
+  var code=(document.getElementById('paisCode').value||'').trim().toUpperCase();
+  return code==='PAIS-77' || (S.finalCode && code===S.finalCode);
+}
+function abrirRelatorio(){
+  if(!codigoValido()){ modal('🔒 Código não confere','Digite <b>PAIS-77</b> (código fixo da família) ou o código <b>SIM-XX-YY</b> que apareceu no fim do Show Final.'); return; }
+  renderTrilhaPais(); renderRelatorio();
+}
+function renderTrilhaPais(){
+  document.getElementById('paisTrilha').innerHTML = T.liberadoPelosPais
+    ? '<div class="paisbox">🔓 Trilha liberada pelos pais em '+dataBR(T.liberadoEm)+'.<button class="btn ghost small" onclick="trancarDeNovo()">🔒 Trancar de novo</button></div>'
+    : '<button class="btn yellow small" onclick="liberarTrilha()">🔓 Liberar todos os materiais</button><p class="menu-desc" style="margin:0;">Use quando a criança estudou de outro jeito ou trocou de aparelho.</p>';
+}
+function liberarTrilha(){
+  if(!codigoValido()) return;
+  T.liberadoPelosPais=true; T.liberadoEm=new Date().toISOString(); saveT();
+  renderTrilhaPais(); renderRelatorio(); refreshMenu();
+  modal('🔓 Trilha liberada','Todos os materiais estão abertos. No menu aparece o selo "Trilha liberada pelos pais".');
+}
+function trancarDeNovo(){
+  T.liberadoPelosPais=false; T.trancadoEm=new Date().toISOString(); saveT();
+  refreshMenu(); if(document.getElementById('paisReport').innerHTML){ renderTrilhaPais(); renderRelatorio(); }
+}
+function renderRelatorio(){
+  var h='', i;
+  h+='<h3 style="margin-top:14px;">🛤️ Trilha</h3><table class="tbl"><tr><th>Etapa</th><th>Situação</th></tr>';
+  for(i=0;i<ETAPAS.length;i++){
+    h+='<tr><td>'+ETAPAS[i].nome+'</td><td>'+(feita(i)?'✅ concluída em '+dataBR(quandoFeita(i)):'⬜ ainda não')+'</td></tr>';
+  }
+  h+='</table><p style="font-size:.9rem;font-weight:700;">'+(T.liberadoPelosPais?'🔓 Trilha liberada pelos pais em '+dataBR(T.liberadoEm)+'.':'Trilha seguindo a ordem normal (não liberada pelos pais).')+'</p>';
+  h+='<h3>🟡 Folhas</h3><table class="tbl"><tr><th>Folha</th><th>Última vez</th><th>Melhor</th></tr>';
+  for(i=1;i<=6;i++){ var f=S.fases[i];
+    h+='<tr><td>'+TITULOS[i]+'</td><td>'+(f&&f.concluido?(f.acertos+' de '+f.total):'não fez')+'</td><td>'+(f&&f.concluido?f.melhor:'—')+'</td></tr>'; }
+  h+='</table>';
+  h+='<p style="font-size:.9rem;font-weight:700;">🗺️ Mural: rolou até '+(S.mural.maxPct||0)+'% da página'+(S.mural.concluido?' e marcou "li até o fim".':'.')+'</p>';
+  h+='<h3>✏️ O que a criança escreveu (Folha 4 — Escrita de Frases)</h3>';
+  var tem=false, lista=JOGO[4];
+  for(i=0;i<lista.length;i++){ var it=lista[i]; if(it.t!=='esc') continue; var reg=S.escrita[it.id]; if(!reg||!reg.resp) continue; tem=true;
+    h+='<div class="wbox'+(reg.transcrita?' red':'')+'"><h4>'+it.tit+'</h4><p style="font-weight:600;font-size:.94rem;">'+esc(reg.resp)+'</p>';
+    if(reg.transcrita) h+='<div class="redflag">🔴 Para revisar: ficou muito parecida com o enunciado (cópia do texto).</div>';
+    var nao=[], j; for(j=0;j<it.chk.length;j++){ if(reg.chk&&reg.chk[j]===0) nao.push(it.chk[j]); }
+    if(nao.length) h+='<div class="warn">Marcou "ainda não" em:<br>• '+nao.join('<br>• ')+'</div>';
+    if(reg.tentou && reg.tentou!==reg.resp) h+='<p style="font-size:.85rem;color:#7C7889;"><b>1ª tentativa (era cópia):</b> '+esc(reg.tentou)+'</p>';
+    h+='<p style="font-size:.85rem;"><b>Modelo:</b> '+it.modelo+'</p></div>'; }
+  if(!tem) h+='<p style="font-weight:700;">Ainda não escreveu nada.</p>';
+  h+='<h3>🌟 Show Final</h3>';
+  if(S.finalScore===null||S.finalScore===undefined) h+='<p style="font-weight:700;">Ainda não fez o Show Final.</p>';
+  else{
+    h+='<p style="font-weight:800;">Nota: '+S.finalScore+' de '+FINAL.length+' · Código: <b>'+S.finalCode+'</b></p><table class="tbl"><tr><th>Questão</th><th>Marcou</th><th>Certa</th></tr>';
+    for(i=0;i<S.finalDet.length;i++){ var d=S.finalDet[i]; h+='<tr><td>'+(d.ok?'✅':'❌')+' '+d.q+'</td><td>'+d.marcou+'</td><td><b>'+d.certa+'</b></td></tr>'; }
+    h+='</table>';
+  }
+  h+='<h3>📖 Gabarito comentado do Show Final</h3>';
+  for(i=0;i<FINAL.length;i++){ var q=FINAL[i];
+    h+='<div class="wbox"><div style="font-weight:800;margin:0 0 6px;">'+(i+1)+'. '+q.p+'</div>';
+    for(var k=0;k<q.o.length;k++){
+      if(k===q.c) h+='<div style="background:#E2F4EA;border:2px solid #3FA34D;border-radius:10px;padding:6px 9px;margin:4px 0;font-weight:800;">✅ '+q.o[k]+'</div>';
+      else h+='<div style="background:#F1EFF3;border:2px solid #DAD7DF;border-radius:10px;padding:6px 9px;margin:4px 0;color:#6C6878;font-weight:700;">'+q.o[k]+(q.ex&&q.ex[k]?' — <i>'+q.ex[k]+'</i>':'')+'</div>';
+    }
+    h+='</div>'; }
+  h+='<h3>📚 Pontos de atenção (o que deu trabalho no caderno e no livro)</h3><ul style="font-weight:700;font-size:.92rem;">'+
+     '<li>Diminutivo: chapeuzinho, borboletinha, menininho, montanhinha, gafanhotinho. Aumentativo de amigo = amigão.</li>'+
+     '<li>Pontuação: ! nas frases exclamativas ("Que calor!", "Ah, não!"); escrever certo exclamação / exclamativa e interrogação / interrogativa.</li>'+
+     '<li>Poema: versos (linhas) em estrofes (grupinhos). A folhinha com data e assinatura não parece poema.</li>'+
+     '<li>R e RR: amora (r) e corrida (rr).</li>'+
+     '<li>História: promessa (com SS) e cumprir (com U).</li></ul>';
+  document.getElementById('paisReport').innerHTML=h;
+}
+
+/* =========================================================
+   BACKUP
+   ========================================================= */
+function exportar(){
+  document.getElementById('backupBox').value=JSON.stringify({kit:'lagoa_encantada_2ano',exportadoEm:new Date().toISOString(),estado:S,trilha:T});
+  modal('📥 Pronto','O código do backup apareceu na caixa. Copie e guarde (pode mandar por mensagem para outro aparelho).');
+}
+function importar(){
+  var v=document.getElementById('backupBox').value.trim();
+  if(!v){ modal('🤔 Caixa vazia','Cole o código do backup na caixa antes de importar.'); return; }
+  modal('📤 Importar','Isso vai <b>substituir</b> o progresso deste aparelho. Continuar?',function(){
+    try{ var o=JSON.parse(v); if(!o||typeof o!=='object') throw 0;
+      if(o.estado){ S=arrumar(o.estado); if(o.trilha){ T=o.trilha; saveT(); } } else S=arrumar(o);
+      save(); refreshMenu(); modal('✅ Importado','O progresso foi restaurado neste aparelho.');
+    }catch(e){ modal('❌ Não deu','Esse código de backup não parece válido. Confira se copiou tudo.'); }
+  },true);
+}
+function zerar(){
+  modal('🗑️ Zerar tudo','Isso apaga <b>todo</b> o progresso deste aparelho (inclusive a trilha) e não dá para desfazer. Continuar?',function(){
+    lsDel(KEY); lsDel(TKEY); S=arrumar(novoEstado()); T={liberadoPelosPais:false,liberadoEm:null};
+    document.getElementById('paisReport').innerHTML=''; document.getElementById('paisTrilha').innerHTML='';
+    document.getElementById('backupBox').value=''; refreshMenu(); go('scr-menu');
+  },true);
+}
+
+/* ---------- arranque ---------- */
+refreshMenu();
+</script>
+</body>
+</html>
